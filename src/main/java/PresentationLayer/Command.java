@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
 import java.util.HashMap;
+import javax.ejb.HomeHandle;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +21,7 @@ abstract class Command {
         commands.put("vieworderscustomer", new ViewOrdersCustomer());
         commands.put("sendorder", new SendOrder());
         commands.put("deleteorder", new DeleteOrder());
+        commands.put("home", new Home());
 
     }
 

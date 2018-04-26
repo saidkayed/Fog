@@ -22,6 +22,12 @@
             <br>
             <input type="submit" value="Make Order">
         </form>
+        <form action="FrontController" method="Post">
+            <input type="hidden" name="command" value="home">
+            <input type="submit" name="Back">
+            
+            
+        </form>
 
     </body>
 </html>
