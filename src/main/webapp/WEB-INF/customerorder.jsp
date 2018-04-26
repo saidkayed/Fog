@@ -19,7 +19,7 @@ User user = (User) session.getAttribute("user");
     
      <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">
-            <input type="submit" name="Back">
+            <input type="submit" value="Back">
             
             
         </form>
