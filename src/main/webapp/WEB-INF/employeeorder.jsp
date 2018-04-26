@@ -19,14 +19,7 @@
         <div>
             <h1>All Orders in system:</h1><br>
             <table>
-                <thead>
-                    <tr>
-                        <th>Orderid</th>
-                        <th>Length</th>
-                        <th>Width</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
+
                 <%=Order.empOrderToHtml()%>
             </table>
         </div>

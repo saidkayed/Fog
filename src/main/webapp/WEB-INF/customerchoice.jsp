@@ -14,10 +14,10 @@
     <body>
         <form name="makeorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="makeorder">
-            Length:<br>
+            Length in cm:<br>
             <input type="number" name="length" value="0">
             <br>
-            Width:<br>
+            Width in cm:<br>
             <input type="number" name="width" value="0">
             <br>
             <input type="submit" value="Make Order">

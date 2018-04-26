@@ -25,12 +25,6 @@ public class ViewOrdersCustomer extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-
-        ArrayList<Order> allOrdersCustomer = LogicFacade.getAllOrdersById(user);
-
-        request.setAttribute("orderscustomer", allOrdersCustomer);
 
         return "/WEB-INF/" + "customerorder";
     }

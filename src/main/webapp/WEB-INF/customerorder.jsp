@@ -4,12 +4,13 @@
     Author     : tobbe
 --%>
 
+<%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    ArrayList<Order> allOrders = (ArrayList<Order>) request.getAttribute("orderscustomer");
+User user = (User) session.getAttribute("user");
 %>
 <html>
     <head>
@@ -17,6 +18,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%=allOrders.toString()%>
+        <div>
+            <h1>All orders made by you</h1><br>
+        <table>
+            <%=Order.userOrderToHtml(user)%>
+        </table>
+        </div>
     </body>
 </html>
