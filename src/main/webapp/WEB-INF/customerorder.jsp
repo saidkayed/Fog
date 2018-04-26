@@ -17,19 +17,17 @@ User user = (User) session.getAttribute("user");
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     
-     <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="home">
-            <input type="submit" value="Back">
-            
-            
-        </form>
     </head>
     <body>
         <div>
-            <h1>All orders made by you</h1><br>
+            <h1>All orders made by <%=user.getEmail()%> </h1><br>
         <table>
             <%=Order.userOrderToHtml(user)%>
         </table>
         </div>
+    <form action="FrontController" method="Post">
+        <input type="hidden" name="command" value="home">
+        <input type="submit" value="Back">
+    </form>
     </body>
 </html>
