@@ -87,8 +87,6 @@ public class Order {
         String output = "<h2> No order found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrders();
 
-        for (Order orders : order) {
-
             if (!order.isEmpty()) {
 
                 output = "<tbody>"
@@ -98,6 +96,8 @@ public class Order {
                         + "<th>Width</th>"
                         + "<th>Status</th>"
                         + "</tr>";
+                
+                for (Order orders : order) {
                 output += "<tr>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
@@ -122,29 +122,32 @@ public class Order {
         }
         return output;
     }
-    
-    public static String userOrderToHtml(User user) throws LoginSampleException{
+
+    public static String userOrderToHtml(User user) throws LoginSampleException {
         String output = "<h2> You have not made any orders</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrdersById(user);
-        
-        for (Order orders : order){
-            
-            if (!order.isEmpty()){
-                output = "<tbody>"
-                        + "<tr>"
-                        + "<th>Orderid</th>"
-                        + "<th>Length</th>"
-                        + "<th>Width</th>"
-                        + "<th>Status</th>"
-                        + "</tr>";
+
+        if (!order.isEmpty()) {
+
+            output = "<tbody>"
+                    + "<tr>"
+                    + "<th>Orderid</th>"
+                    + "<th>Length</th>"
+                    + "<th>Width</th>"
+                    + "<th>Status</th>"
+                    + "</tr>";
+
+            for (Order orders : order) {
                 output += "<tr>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>"
-                        + "</tr>"
-                        + "</tbody>";
+                        + "</tr>";
+
             }
-        } return output;
+            output += "</tbody>";
+        }
+        return output;
     }
 }

@@ -17,6 +17,7 @@ abstract class Command {
         commands.put("logout", new Logout());
         commands.put("makeorder", new MakeOrder());
         commands.put("orderpage", new OrderPage());
+        commands.put("viewsvg", new ViewSvg());
         commands.put("viewordersemp", new ViewOrdersEmp());
         commands.put("vieworderscustomer", new ViewOrdersCustomer());
         commands.put("sendorder", new SendOrder());

@@ -37,7 +37,7 @@ public class OrderMapper {
         }
     }
 
-    public static ArrayList<Order> getALlOrders() throws LoginSampleException {
+    public static ArrayList<Order> getAllOrders() throws LoginSampleException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -64,7 +64,7 @@ public class OrderMapper {
         return allOrders;
     }
 
-    public static ArrayList<Order> getALlOrdersById(User user) throws LoginSampleException {
+    public static ArrayList<Order> getAllOrdersById(User user) throws LoginSampleException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();

@@ -32,11 +32,11 @@ public class LogicFacade {
     }
 
     public static ArrayList<Order> getAllOrders() throws LoginSampleException {
-        return OrderMapper.getALlOrders();
+        return OrderMapper.getAllOrders();
     }
 
     public static ArrayList<Order> getAllOrdersById(User user) throws LoginSampleException {
-        return OrderMapper.getALlOrdersById(user);
+        return OrderMapper.getAllOrdersById(user);
     }
     public static void sendOrderById(int orderid) throws LoginSampleException{
         OrderMapper.sendOrderById(orderid);
