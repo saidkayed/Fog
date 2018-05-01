@@ -5,10 +5,7 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Order;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
