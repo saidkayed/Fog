@@ -91,6 +91,7 @@ public class Order {
 
                 output = "<tbody>"
                         + "<tr>"
+                        + "<th>Userid</th>"
                         + "<th>Orderid</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
@@ -99,6 +100,8 @@ public class Order {
                 
                 for (Order orders : order) {
                 output += "<tr>"
+                
+                        + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
@@ -133,6 +136,7 @@ public class Order {
 
                 output = "<tbody>"
                         + "<tr>"
+                        + "<th>Userid</th>"
                         + "<th>Orderid</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
@@ -141,6 +145,7 @@ public class Order {
                 
                 for (Order orders : order) {
                 output += "<tr>"
+                        + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
@@ -175,6 +180,7 @@ public class Order {
 
             output = "<tbody>"
                     + "<tr>"
+                    + "<th>Userid</th>"
                     + "<th>Orderid</th>"
                     + "<th>Length</th>"
                     + "<th>Width</th>"
@@ -183,6 +189,7 @@ public class Order {
 
             for (Order orders : order) {
                 output += "<tr>"
+                        + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
