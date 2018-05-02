@@ -84,7 +84,7 @@ public class Order {
 
     public static String empOrderToHtml() throws LoginSampleException {
 
-        String output = "<h2> No order found in database</h2>";
+        String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrders();
 
             if (!order.isEmpty()) {

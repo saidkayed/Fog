@@ -14,10 +14,10 @@
     <body>
         <form name="viewsvg" action="FrontController" method="POST">
             <input type="hidden" name="command" value="viewsvg">
-            Length in cm:<br>
+            Length in cm: (must be at least 200)<br>
             <input type="number" name="length" value="0">
             <br>
-            Width in cm:<br>
+            Width in cm: (must be at least 200)<br>
             <input type="number" name="width" value="0">
             <br>
             <input type="submit" value="View Plan">

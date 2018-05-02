@@ -73,7 +73,7 @@
 
           <text x=<%=width / 2%> y="15" font-family="sans-serif" font-size="20px" fill="red"><%=width%> cm</text>
     <text writing-mode="tb" x="10" y=<%=length / 2%> font-family="sans-serif" font-size="20px" fill="red"><%=length%> cm</text>
-    <text x=<%=width / 2%> y=<%=length / 5%> font-family="sans-serif" font-size="20px" fill="blue"><%=square%> m2</text> 
+    <text x=<%=width / 2%> y=<%=length / 5+20%> font-family="sans-serif" font-size="20px" fill="blue"><%=square%> m2</text> 
 
     </svg>
     <form>
