@@ -37,6 +37,8 @@ public class EmpSearch extends Command {
 
             User searchUser = LogicFacade.getUserByEmail(search);
             request.setAttribute("searchUser", searchUser);
+        } else {
+            request.setAttribute("message", "User not found");
         }
 
         return "/WEB-INF/" + "employeeorder";
