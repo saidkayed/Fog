@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <%
     User user = (User) request.getAttribute("searchUser");
-                String message = (String) request.getAttribute("message");
+    String message = (String) request.getAttribute("message");
 %>
 <html>
     <head>
@@ -42,7 +42,6 @@
             <table>
 
                 <%=Order.empOrderToHtmlByEmail(user.getEmail())%>
-
             </table>
             <%} else {%>
             <table>

@@ -33,9 +33,9 @@ public class ViewSvg extends Command {
         int length = Integer.parseInt(request.getParameter("length"));
 
         if(width < 200 || length < 200){
-            throw new LoginSampleException("input must be at least 200");
-                //request.setAttribute("message", "Input must be at least 200");
-                //return "/WEB-INF/" + "customerchoice";
+            //throw new LoginSampleException("input must be at least 200");
+                request.setAttribute("message", "Input must be at least 200");
+                return "/WEB-INF/" + "customerchoice";
         }
         
         request.setAttribute("width", width);
