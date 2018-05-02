@@ -6,9 +6,11 @@
 package PresentationLayer;
 
 import DBAccess.OrderMapper;
+import DBAccess.UserMapper;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,12 +26,27 @@ public class EmpSearch extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
     String search = request.getParameter("search");
+    ArrayList<User> allUsers = UserMapper.getAllUsers();
+    ArrayList<String> allEmails = new ArrayList();
+    
+    for (int i = 0 ; i<allUsers.size(); i++){
+        allEmails.add(allUsers.get(i).getEmail());
+    }
+    
+    if(allEmails.contains(search)){
     
     User searchUser = LogicFacade.getUserByEmail(search);
-    
     request.setAttribute("searchUser", searchUser);
+    }
+    
+    
+    
+    
     
     return "/WEB-INF/" + "employeeorder";
     }
-    
 }
+    
+    
+    
+
