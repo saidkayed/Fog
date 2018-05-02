@@ -33,7 +33,7 @@
                         <br>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                     </form>
-                    
+                    <br>
                     <h4> Register </h4>
                   
                     <form name="register" action="FrontController" method="POST">
