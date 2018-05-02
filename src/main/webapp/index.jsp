@@ -9,39 +9,45 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <title>Welcome page</title>
     </head>
     <body>
-        <h1>Welcome to Sem 2</h1>
-
+    <center>
+        <h1>Welcome to Fog Carport</h1>
+        
         <table>
-            <tr><td>Login</td>
+            <tr>
                 <td>
+                    <h4> Login </h4>
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email">
+                        <input class="form-control mr-sm-2" type="text" name="email" placeholder="email">
                         <br>
                         Password:<br>
-                        <input type="password" name="password">
+                        <input class="form-control mr-sm-2" type="password" name="password" placeholder="password">
                         <br>
-                        <input type="submit" value="Submit">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                     </form>
-                </td>
-                <td>Or Register</td>
-                <td>
+                    
+                    <h4> Register </h4>
+                  
                     <form name="register" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="register">
                         Email:<br>
-                        <input type="text" name="email" >
+                        <input class="form-control mr-sm-2" type="text" name="email" placeholder="email">
                         <br>
                         Password:<br>
-                        <input type="password" name="password1">
+                        <input class="form-control mr-sm-2" type="password" name="password1" placeholder="password">
                         <br>
                         Retype Password:<br>
-                        <input type="password" name="password2">
+                        <input class="form-control mr-sm-2" type="password" name="password2" placeholder="password">
                         <br>
-                        <input type="submit" value="Submit">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                     </form>
                 </td>
             </tr>
@@ -52,5 +58,6 @@
         <p><%= error%>
             <% }
             %>
+    </center>
     </body>
 </html>
