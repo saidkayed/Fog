@@ -35,13 +35,16 @@ public class LogicFacade {
         return OrderMapper.getAllOrders();
     }
 
-    public static ArrayList<Order> getAllOrdersById(User user) throws LoginSampleException {
-        return OrderMapper.getAllOrdersById(user);
+    public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {
+        return OrderMapper.getAllOrdersByUser(user);
     }
     public static void sendOrderById(int orderid) throws LoginSampleException{
         OrderMapper.sendOrderById(orderid);
     }
     public static void deleteOrderById(int orderid) throws LoginSampleException{
         OrderMapper.deleteOrderById(orderid);
+    }
+    public static User getUserByEmail(String email) throws LoginSampleException{
+        return UserMapper.getUserByEmail(email);
     }
 }

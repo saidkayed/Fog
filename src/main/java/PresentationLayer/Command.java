@@ -22,6 +22,7 @@ abstract class Command {
         commands.put("sendorder", new SendOrder());
         commands.put("deleteorder", new DeleteOrder());
         commands.put("home", new Home());
+        commands.put("search", new EmpSearch());
 
     }
 

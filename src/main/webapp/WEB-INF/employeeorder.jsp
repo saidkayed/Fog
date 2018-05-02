@@ -4,6 +4,7 @@
     Author     : tobbe
 --%>
 
+<%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,10 +19,34 @@
     <body>
         <div>
             <h1>All Orders in system:</h1><br>
+            
+            <form action="FrontController" method="Post">
+            <input type="text" name="search" value="">
+            <input type="hidden" name="command" value="search">
+            <input type="submit" value="Search">
+            </form>
+            <form name="viewordersemp" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="viewordersemp">
+            <input type="submit" value="View All Orders">
+            </form>
+            <%
+            User user = (User) request.getAttribute("searchUser");
+            
+            if(user != null){
+            %>
+            
+            <table>
+                
+                <%=Order.empOrderToHtmlByEmail(user.getEmail())%>
+                
+            </table>
+                <%} else {%>
             <table>
 
                 <%=Order.empOrderToHtml()%>
             </table>
+            
+            <%}%>
         </div>
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">

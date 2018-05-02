@@ -63,7 +63,7 @@ public class OrderMapper {
         return allOrders;
     }
 
-    public static ArrayList<Order> getAllOrdersById(User user) throws LoginSampleException {
+    public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();

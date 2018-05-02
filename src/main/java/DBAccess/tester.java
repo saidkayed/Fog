@@ -23,7 +23,7 @@ public class tester {
     public static void main(String[] args) throws LoginSampleException {
         User user = UserMapper.getUserById(1);
         
-        System.out.println(OrderMapper.getAllOrdersById(user).toString());
+        System.out.println(OrderMapper.getAllOrdersByUser(user).toString());
         
     }
     

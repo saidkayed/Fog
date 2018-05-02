@@ -122,10 +122,54 @@ public class Order {
         }
         return output;
     }
+    
+     public static String empOrderToHtmlByEmail(String email) throws LoginSampleException {
+
+        String output = "<h2> No orders found in database</h2>";
+        User user = LogicFacade.getUserByEmail(email);
+        ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
+
+            if (!order.isEmpty()) {
+
+                output = "<tbody>"
+                        + "<tr>"
+                        + "<th>Orderid</th>"
+                        + "<th>Length</th>"
+                        + "<th>Width</th>"
+                        + "<th>Status</th>"
+                        + "</tr>";
+                
+                for (Order orders : order) {
+                output += "<tr>"
+                        + "<td>" + orders.getOrderid() + "</td>"
+                        + "<td>" + orders.getLength() + "</td>"
+                        + "<td>" + orders.getWidth() + "</td>"
+                        + "<td>" + orders.getStatus() + "</td>";
+
+                if (orders.getStatus().equals("pending")) {
+                    output += "<td><form name=\"sendorder\" action=\"FrontController\" method=\"POST\">"
+                            + "<input type=\"hidden\" name=\"command\" value=\"sendorder\">"
+                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                            + "<input type=\"submit\" value=\"Send Order\">"
+                            + "</form></td>";
+                }
+                output += "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
+                        + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
+                        + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                        + "<input type=\"submit\" value=\"Delete Order\">"
+                        + "</form></td>"
+                        + "</tr>"
+                        + "</tbody>";
+            }
+        }
+        return output;
+    }
+    
+    
 
     public static String userOrderToHtml(User user) throws LoginSampleException {
         String output = "<h2> You have not made any orders</h2>";
-        ArrayList<Order> order = LogicFacade.getAllOrdersById(user);
+        ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
 
         if (!order.isEmpty()) {
 

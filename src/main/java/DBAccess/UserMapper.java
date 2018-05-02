@@ -83,4 +83,31 @@ public class UserMapper {
         }
 
     }
+    
+    public static User getUserByEmail(String email) throws LoginSampleException{
+        try {
+            Connection con = Connector.connection();
+            String SQL = "select * from user where email=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("role");
+                String password = rs.getString("password");
+                int id = rs.getInt("id");
+
+                User user = new User(email, password, role);
+                user.setId(id);
+                return user;
+
+            } else {
+                throw new LoginSampleException("Could not validate user");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
 }
