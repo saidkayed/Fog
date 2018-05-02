@@ -8,7 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+
     User user = (User) session.getAttribute("user");
+    String message = (String) request.getAttribute("message");
+
 %>
 <html>
     <head>
@@ -42,6 +45,12 @@
             <br>
             <input type="submit" value="View Plan">
         </form>
+        <%if (message != null) {%>
+
+        <%=message%>
+
+        <%}%>
+
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">
             <input type="submit" value="Back">   

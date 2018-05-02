@@ -19,12 +19,12 @@ public class tester {
 
     /**
      * @param args the command line arguments
+     * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
-        User user = UserMapper.getUserById(1);
-        
-        System.out.println(OrderMapper.getAllOrdersById(user).toString());
-        
+       int hej = Integer.parseInt("hej");
+       
+        System.out.println(hej);
     }
     
 }

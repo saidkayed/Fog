@@ -23,10 +23,17 @@ public class ViewSvg extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        
+        String stringWidth = request.getParameter("width");
+        String stringLength = request.getParameter("length");
+        
+        if (!stringWidth.isEmpty() || !stringLength.isEmpty()){
+        
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-        
+
         if(width < 200 || length < 200){
+                request.setAttribute("message", "Input must be at least 200");
                 return "/WEB-INF/" + "customerchoice";
         }
         
@@ -34,5 +41,9 @@ public class ViewSvg extends Command {
         request.setAttribute("length", length);
         return "/WEB-INF/" + "viewsvg";
     }
+        request.setAttribute("message", "Please fill out both input forms");
+        return "/WEB-INF/" + "customerchoice";
+            
+        } 
     
 }
