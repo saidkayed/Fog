@@ -22,7 +22,9 @@ public class tester {
      * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
+       int hej = Integer.parseInt("hej");
        
+        System.out.println(hej);
     }
     
 }
