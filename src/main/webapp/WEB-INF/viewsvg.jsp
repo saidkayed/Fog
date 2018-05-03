@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <%
     User user = (User) session.getAttribute("user");
-    
+
     int length = (Integer) request.getAttribute("length");
     int width = (Integer) request.getAttribute("width");
     int height = (Integer) request.getAttribute("height");
@@ -41,7 +41,7 @@
     <center>
         <br><br><br>
         <svg
-            width=<%=width + 20%> height=<%=length + 20%> >
+            width=<%=width + 20%> height=<%=length + 20%> viewBox="0 0 600 600" >
         <rect x="20" y="20" height=<%=length + 20%> width=<%=width + 20%>
               style="stroke:#000000; fill: lightgray"/>
 
@@ -96,29 +96,27 @@
         <text x=<%=width / 2%> y=<%=length / 5 + 20%> font-family="sans-serif" font-size="20px" fill="blue"><%=square%> m2</text> 
 
         </svg>
-        <br>
-        <br>
         <svg
-            width=<%=width + 20%> height=<%=length + 20%>>
-        <line x1="0" y1="0" x2=<%=length +20%> y2="0"
+            width=<%=width + 20%> height=<%=length + 20%> viewBox="0 0 600 600">
+        <line x1="10" y1="0" x2=<%=length + 20%> y2="0"
               style="stroke:rgb(80,80,80);stroke-width:10"
               />
         <line 
-            x1="0" y1="0" x2="0" y2=<%=height +20%>
-              style="stroke:rgb(80,80,80);stroke-width:10"
-            
+            x1="10" y1="0" x2="10" y2=<%=height + 20%>
+            style="stroke:rgb(80,80,80);stroke-width:10"
+
             />
         <line 
-             x1=<%=length + 20%> y1="0" x2=<%=length + 20%> y2=<%=height +20%>
-              style="stroke:rgb(80,80,80);stroke-width:10"
-              />
-              
-               <line 
-             x1=<%=length / 2 + 10 %> y1=0 x2=<%=length / 2 + 10%> y2=<%=height +20%>
-              style="stroke:rgb(80,80,80);stroke-width:10"
-            
+            x1=<%=length + 20%> y1="0" x2=<%=length + 20%> y2=<%=height + 20%>
+            style="stroke:rgb(80,80,80);stroke-width:10"
             />
-              
+
+        <line 
+            x1=<%=length / 2 + 10%> y1=0 x2=<%=length / 2 + 10%> y2=<%=height + 20%>
+            style="stroke:rgb(80,80,80);stroke-width:10"
+
+            />
+
         </svg>
         <br><br><br>
         <form>
@@ -128,7 +126,7 @@
                 <input type="hidden" name="width" value=<%=width%>>
                 <input type="hidden" name="height" value=<%=height%>>
 
-                
+
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">
             </form>
     </center>
