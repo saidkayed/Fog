@@ -126,6 +126,7 @@
                 <input type="hidden" name="command" value="makeorder">
                 <input type="hidden" name="length" value=<%=length%>>
                 <input type="hidden" name="width" value=<%=width%>>
+                
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">
             </form>
     </center>

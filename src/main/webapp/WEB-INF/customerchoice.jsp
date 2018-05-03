@@ -43,7 +43,7 @@
                     <form name="viewsvg" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="viewsvg">
                         Length in cm:<br>
-                        <input class="form-control mr-sm-2" type="tekst" name="length" placeholder="must be at least 200">
+                        <input class="form-control mr-sm-2" type="number" name="length" placeholder="must be at least 200">
                         <br>
                         Width in cm:<br>
                         <input class="form-control mr-sm-2" type="number" name="width" placeholder="must be at least 200">
