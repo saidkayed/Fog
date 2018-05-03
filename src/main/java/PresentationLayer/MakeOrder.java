@@ -25,11 +25,12 @@ public class MakeOrder extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
+        int height = Integer.parseInt(request.getParameter("height"));
         
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         
-        LogicFacade.makeOrder(user, width, length);
+        LogicFacade.makeOrder(user, width, length, height);
         
         
         

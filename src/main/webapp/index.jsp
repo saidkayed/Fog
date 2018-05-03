@@ -18,7 +18,7 @@
     <body>
     <center>
         <h1>Welcome to Fog Carport</h1>
-        
+
         <table>
             <tr>
                 <td>
@@ -35,7 +35,7 @@
                     </form>
                     <br>
                     <h4> Register </h4>
-                  
+
                     <form name="register" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="register">
                         Email:<br>
@@ -59,5 +59,5 @@
             <% }
             %>
     </center>
-    </body>
+</body>
 </html>

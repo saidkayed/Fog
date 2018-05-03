@@ -20,16 +20,17 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static void createOrder(User user, int width, int length, String date, String status) throws LoginSampleException {
+    public static void createOrder(User user, int width, int length, int height, String date, String status) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `order` (id, width, length, date, status) VALUES (?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO `order` (id, width, length, height, date, status) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, user.getId());
             ps.setInt(2, width);
             ps.setInt(3, length);
-            ps.setString(4, date);
-            ps.setString(5, status);
+            ps.setInt(4, height);
+            ps.setString(5, date);
+            ps.setString(6, status);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
@@ -50,10 +51,11 @@ public class OrderMapper {
                 int id = rs.getInt("id");
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
+                int height = rs.getInt("height");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, id, width, length, date, status);
+                Order order = new Order(orderid, id, width, length, height, date, status);
 
                 allOrders.add(order);
             }
@@ -78,10 +80,11 @@ public class OrderMapper {
                 int orderid = rs.getInt("orderid");
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
+                int height = rs.getInt("height");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, user.getId(), width, length, date, status);
+                Order order = new Order(orderid, user.getId(), width, length, height, date, status);
 
                 allOrders.add(order);
             }

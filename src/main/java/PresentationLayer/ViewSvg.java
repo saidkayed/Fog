@@ -24,28 +24,28 @@ public class ViewSvg extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
-        String stringWidth = request.getParameter("width");
-        String stringLength = request.getParameter("length");
-        String stringHeight = request.getParameter("height");
-        if (!stringWidth.isEmpty() && !stringLength.isEmpty() && !stringHeight.isEmpty()){
+//        String stringWidth = request.getParameter("width");
+//        String stringLength = request.getParameter("length");
+//        String stringHeight = request.getParameter("height");
+        //if (!stringWidth.isEmpty() && !stringLength.isEmpty() && !stringHeight.isEmpty()){
         
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         int height = Integer.parseInt(request.getParameter("height"));
 
-        if(width < 200 || length < 200){
+        //if(width < 200 || length < 200){
             //throw new LoginSampleException("input must be at least 200");
-                request.setAttribute("message", "Input must be at least 200");
-                return "/WEB-INF/" + "customerchoice";
-        }
+                //request.setAttribute("message", "Input must be at least 200");
+                //return "/WEB-INF/" + "customerchoice";
+       // }
         request.setAttribute("height", height);
         request.setAttribute("width", width);
         request.setAttribute("length", length);
         return "/WEB-INF/" + "viewsvg";
-    }
-        request.setAttribute("message", "Please fill out both input forms");
-        return "/WEB-INF/" + "customerchoice";
+//        request.setAttribute("message", "Please fill out both input forms");
+//        return "/WEB-INF/" + "customerchoice";
             
-        } 
-    
+        }
 }
+//    
+//}
