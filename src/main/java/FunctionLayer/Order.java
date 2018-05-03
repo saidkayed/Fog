@@ -17,14 +17,16 @@ public class Order {
     private int id;
     private int width;
     private int length;
+    private int height;
     private String date;
     private String status;
 
-    public Order(int orderid, int id, int width, int length, String date, String status) {
+    public Order(int orderid, int id, int width, int length, int height, String date, String status) {
         this.orderid = orderid;
         this.id = id;
         this.width = width;
         this.length = length;
+        this.height = height;
         this.date = date;
         this.status = status;
     }
@@ -61,6 +63,14 @@ public class Order {
         this.length = length;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public String getDate() {
         return date;
     }
@@ -79,8 +89,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", date=" + date + ", status=" + status + '}';
+        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", height=" + height + ", date=" + date + ", status=" + status + '}';
     }
+
 
     public static String empOrderToHtml() throws LoginSampleException {
 
@@ -95,6 +106,7 @@ public class Order {
                         + "<th>Orderid</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
+                        + "<th>Height</th>"
                         + "<th>Status</th>"
                         + "</tr>";
                 
@@ -105,6 +117,7 @@ public class Order {
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
+                        + "<td>" + orders.getHeight() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
                 if (orders.getStatus().equals("pending")) {
@@ -140,6 +153,7 @@ public class Order {
                         + "<th>Orderid</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
+                        + "<th>Height</th>"
                         + "<th>Status</th>"
                         + "</tr>";
                 
@@ -149,6 +163,7 @@ public class Order {
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
+                        + "<td>" + orders.getHeight() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
                 if (orders.getStatus().equals("pending")) {
@@ -184,6 +199,7 @@ public class Order {
                     + "<th>Orderid</th>"
                     + "<th>Length</th>"
                     + "<th>Width</th>"
+                    + "<th>Height</th>"
                     + "<th>Status</th>"
                     + "</tr>";
 
@@ -193,6 +209,7 @@ public class Order {
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
+                        + "<td>" + orders.getHeight() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>"
                         + "</tr>";
 

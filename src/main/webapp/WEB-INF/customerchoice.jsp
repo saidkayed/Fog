@@ -43,29 +43,36 @@
                     <form name="viewsvg" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="viewsvg">
                         Length in cm:<br>
-                        <input class="form-control mr-sm-2" type="tekst" name="length" placeholder="must be at least 200">
+                        <select name="length" class="form-control" data-style="btn-success">
+                            <option type="number" value="390" >390</option>
+                            <option type="number" value="450" >450</option>
+                            <option type="number" value="480" >480</option>
+                            <option type="number" value="510" >510</option>
+                        </select>
                         <br>
                         Width in cm:<br>
-                        <input class="form-control mr-sm-2" type="number" name="width" placeholder="must be at least 200">
+                        <select name="width" class="form-control" data-style="btn-success">
+                            <option type="number" value="280">280</option>
+                            <option type="number" value="300">300</option>
+                        </select>
                         <br>
                         Height in cm:<br>
-                        <input class="form-control mr-sm-2" type="number" name="height" placeholder="must be at least 200">
+                        <select name="height" class="form-control" data-style="btn-success">
+                            <option type="number" value="280">280</option>
+                            <option type="number" value="300">300</option>
+                        </select>
                         <br>
                         Roof type:<br>
-                        <select name="ChoiceR" class="form-control" data-style="btn-success">
+                        <select name="roof" class="form-control" data-style="btn-success">
                             <option value="fladt" name="fladt">Carport med fladt</option>
                             <option value="rejsning" name="rejsning">Carport med rejsning</option>
                         </select>
                         <br>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input name="shed" type="checkbox" >
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" value="Shed">
-                        </div>
-                        <br>
+                        Shed:<br>
+                        <select name="roof" class="form-control" data-style="btn-success">
+                            <option value="withshed" name="withshed">uden skur</option>
+                            <option value="withoutshed" name="withoutshed">med skur</option>
+                        </select>
                         <br>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Plan</button>
                     </form>
