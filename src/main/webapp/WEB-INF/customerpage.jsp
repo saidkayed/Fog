@@ -1,7 +1,7 @@
 <%-- 
     Document   : customerpage
-    Created on : Aug 22, 2017, 2:33:37 PM
-    Author     : kasper
+    Created on : 23-04-2018, 13:34:44
+    Author     : tobbe
 --%>
 
 <%@page import="FunctionLayer.User"%>

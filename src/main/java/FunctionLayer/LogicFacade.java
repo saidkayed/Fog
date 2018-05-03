@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * The purpose of LogicFacade is to...
  *
- * @author kasper
+ * @author tobbe
  */
 public class LogicFacade {
 
