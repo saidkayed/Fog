@@ -38,15 +38,15 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Orders</button>
         </form>
         <br>
+        <form name="viewmaterials" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="viewmaterials">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Materials</button>
+        </form>
+        <br>
         <form name="lougout" action="FrontController" method="POST">
             <input type="hidden" name="command" value="logout">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
         </form>
-        
-        <table>
-
-            <%=Materials.empMaterialeToHtml()%>
-        </table>
     </center>
 </body>
 </html>

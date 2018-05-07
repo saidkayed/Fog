@@ -4,6 +4,7 @@
     Author     : Sercan
 --%>
 
+<%@page import="FunctionLayer.Materials"%>
 <%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
@@ -35,10 +36,13 @@
         </nav>
         <div>
             <table>
-                <%=Order.empOrderToHtml()%>
+                <%=Materials.empMaterialeToHtml()%>
             </table>
-            <%}%>
         </div>
+        <form action="FrontController" method="Post">
+            <input type="hidden" name="command" value="addmaterial">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
+        </form>
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
