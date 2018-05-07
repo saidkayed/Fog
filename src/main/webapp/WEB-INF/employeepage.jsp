@@ -4,6 +4,7 @@
     Author     : tobbe
 --%>
 
+<%@page import="FunctionLayer.Materials"%>
 <%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,6 +42,10 @@
             <input type="hidden" name="command" value="logout">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
         </form>
+                    <table>
+
+                <%=Materials.empMaterialeToHtml()%>
+            </table>
     </center>
 </body>
 </html>

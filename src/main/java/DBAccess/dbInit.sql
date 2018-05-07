@@ -3,6 +3,7 @@ USE `fog` ;
 
 Drop table if exists `order`;
 Drop table if exists `user`;
+Drop table if exists `materials`;
 -- -----------------------------------------------------
 -- Table `fog`.`user`
 -- -----------------------------------------------------
@@ -37,8 +38,12 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS `fog`.`materiale` (
-  `id` INT(11) NOT NULL,
+-- -----------------------------------------------------
+-- Table `fog`.`materials`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `fog`.`materials` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `price` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
