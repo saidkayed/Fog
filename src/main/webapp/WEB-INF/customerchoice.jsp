@@ -44,7 +44,7 @@
                         <input type="hidden" name="command" value="viewsvg">
                         Length in cm:<br>
 
-                        
+
 
                         <select name="length" class="form-control" data-style="btn-success">
                             <option type="number" value="390" >390</option>
