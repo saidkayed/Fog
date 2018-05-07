@@ -7,11 +7,11 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Materials;
-import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -20,19 +20,23 @@ import java.util.ArrayList;
  */
 public class MaterialsMapper {
 
-    public static void createMateriale(int id, String name, int price) throws LoginSampleException {
+    public static void addMaterial(Materials mat) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `order` (id, name, price) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, id);
-            ps.setString(2, name);
-            ps.setInt(3, price);
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, mat.getId());
+            ps.setString(2, mat.getName());
+            ps.setInt(3, mat.getPrice());
             ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            mat.setId(id);
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
-        }
 
+        }
     }
 
     public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {

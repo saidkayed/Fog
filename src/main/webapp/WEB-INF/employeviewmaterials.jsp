@@ -11,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    User user1 = (User) session.getAttribute("user");
+    User user = (User) session.getAttribute("user");
 %>
 <html>
     <head>
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
                 <form name="logout" action="FrontController" method="POST">
-                    <%=user1.getEmail()%>
+                    <%=user.getEmail()%>
                     <input type="hidden" name="command" value="logout">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
                 </form>
@@ -39,9 +39,9 @@
                 <%=Materials.empMaterialeToHtml()%>
             </table>
         </div>
-        <form action="FrontController" method="Post">
+        <form name="addmaterial" action="FrontController" method="Post">
             <input type="hidden" name="command" value="addmaterial">
-            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="AddMaterial">
         </form>
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">
