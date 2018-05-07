@@ -56,9 +56,9 @@ public class Materials {
 
             output = "<tbody>"
                     + "<tr>"
-                    + "<th>Userid</th>"
-                    + "<th>Orderid</th>"
-                    + "<th>Length</th>"
+                    + "<th>id</th>"
+                    + "<th>Name</th>"
+                    + "<th>Price</th>"
                     + "</tr>";
 
             for (Materials mats : mat) {
