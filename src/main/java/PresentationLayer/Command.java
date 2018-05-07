@@ -23,8 +23,8 @@ abstract class Command {
         commands.put("deleteorder", new DeleteOrder());
         commands.put("home", new Home());
         commands.put("search", new EmpSearch());
-        commands.put("viewmaterials", new Viewmaterials());
-        commands.put("addmaterial", new Addmaterial());
+        commands.put("viewmaterials", new ViewMaterials());
+        commands.put("addmaterial", new AddMaterial());
 
     }
 

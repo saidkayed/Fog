@@ -9,9 +9,9 @@ package PresentationLayer;
  *
  * @author Sercan
  */
-public class Addmaterial extends Command {
+public class AddMaterial extends Command {
 
-    public Addmaterial() {
+    public AddMaterial() {
     }
     
 }

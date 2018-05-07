@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sercan
  */
-public class Viewmaterials extends Command {
+public class ViewMaterials extends Command {
     
-    public Viewmaterials() {
+    public ViewMaterials() {
     }
     
     @Override
