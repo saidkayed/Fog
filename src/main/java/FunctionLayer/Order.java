@@ -152,8 +152,16 @@ public class Order {
                             + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
                             + "<input type=\"submit\" value=\"Send Order\">"
                             + "</form></td>";
+                           
                 }
-                output += "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
+                
+                 output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
+                            + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
+                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                            + "<input type=\"submit\" value=\"Show Productlist\">"
+                            + "</form></td>"
+                 
+                        + "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
                         + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
                         + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
                         + "<input type=\"submit\" value=\"Delete Order\">"
@@ -203,7 +211,13 @@ public class Order {
                             + "<input type=\"submit\" value=\"Send Order\">"
                             + "</form></td>";
                 }
-                output += "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
+                output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
+                            + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
+                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                            + "<input type=\"submit\" value=\"Show Productlist\">"
+                            + "</form></td>"
+                        
+                        + "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
                         + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
                         + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
                         + "<input type=\"submit\" value=\"Delete Order\">"
@@ -244,9 +258,17 @@ public class Order {
                         + "<td>" + orders.getHeight() + "</td>"
                         + "<td>" + orders.getRoof() + "</td>"
                         + "<td>" + orders.getShed() + "</td>"
-                        + "<td>" + orders.getStatus() + "</td>"
-                        + "</tr>";
+                        + "<td>" + orders.getStatus() + "</td>";
+                        
 
+                if(orders.getStatus().equals("Accepted")){
+                    output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
+                            + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
+                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                            + "<input type=\"submit\" value=\"Show Productlist\">"
+                            + "</form></td>";
+                }
+                output += "</tr>";
             }
             output += "</tbody>";
         }
