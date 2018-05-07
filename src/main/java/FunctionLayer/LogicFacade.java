@@ -1,6 +1,6 @@
 package FunctionLayer;
 
-import DBAccess.MaterialeMapper;
+import DBAccess.MaterialsMapper;
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import java.util.ArrayList;
@@ -36,8 +36,8 @@ public class LogicFacade {
         return OrderMapper.getAllOrders();
     }
 
-    public static ArrayList<Materiale> getAllMateriales() throws LoginSampleException {
-        return MaterialeMapper.getAllMateriales();
+    public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {
+        return MaterialsMapper.getAllMateriales();
     }
 
     public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {

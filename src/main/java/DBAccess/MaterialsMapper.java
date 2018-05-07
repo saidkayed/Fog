@@ -6,7 +6,7 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Materiale;
+import FunctionLayer.Materials;
 import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author sidad
  */
-public class MaterialeMapper {
+public class MaterialsMapper {
 
     public static void createMateriale(int id, String name, int price) throws LoginSampleException {
         try {
@@ -35,11 +35,11 @@ public class MaterialeMapper {
 
     }
 
-    public static ArrayList<Materiale> getAllMateriales() throws LoginSampleException {
-        ArrayList<Order> allMateriales = new ArrayList();
+    public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {
+        ArrayList<Materials> allMaterials = new ArrayList();
         try {
             Connection con = Connector.connection();
-            String SQL = "Select * from `materiale`";
+            String SQL = "Select * from materials";
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
@@ -49,14 +49,14 @@ public class MaterialeMapper {
                 String name = rs.getString("name");
                 int price = rs.getInt("price");
 
-                Materiale mat = new Materiale(id, name, price);
+                Materials mat = new Materials(id, name, price);
 
-                allMateriales.add(mat);
+                allMaterials.add(mat);
             }
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
-        return allMateriales;
+        return allMaterials;
     }
 
     public static void deleteMateriale() {
