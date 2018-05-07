@@ -20,17 +20,19 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static void createOrder(User user, int width, int length, int height, String date, String status) throws LoginSampleException {
+    public static void createOrder(User user, int width, int length, int height, String roof, String shed, String date, String status) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `order` (id, width, length, height, date, status) VALUES (?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO `order` (id, width, length, height, roof, shed, date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, user.getId());
             ps.setInt(2, width);
             ps.setInt(3, length);
             ps.setInt(4, height);
-            ps.setString(5, date);
-            ps.setString(6, status);
+            ps.setString(5, roof);
+            ps.setString(6, shed);
+            ps.setString(7, date);
+            ps.setString(8, status);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
@@ -52,10 +54,12 @@ public class OrderMapper {
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
                 int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, id, width, length, height, date, status);
+                Order order = new Order(orderid, id, width, length, height, roof, shed, date, status);
 
                 allOrders.add(order);
             }
@@ -81,10 +85,12 @@ public class OrderMapper {
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
                 int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, user.getId(), width, length, height, date, status);
+                Order order = new Order(orderid, user.getId(), width, length, height, roof, shed, date, status);
 
                 allOrders.add(order);
             }

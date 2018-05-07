@@ -117,8 +117,9 @@
                 <input type="hidden" name="length" value=<%=length%>>
                 <input type="hidden" name="width" value=<%=width%>>
                 <input type="hidden" name="height" value=<%=height%>>
-                <input type="hidden" name="shed" value=<%=shed%>>
                 <input type="hidden" name="roof" value=<%=roof%>>
+                <input type="hidden" name="shed" value=<%=shed%>>
+                
 
 
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">

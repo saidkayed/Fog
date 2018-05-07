@@ -18,15 +18,19 @@ public class Order {
     private int width;
     private int length;
     private int height;
+    private String roof;
+    private String shed;
     private String date;
     private String status;
 
-    public Order(int orderid, int id, int width, int length, int height, String date, String status) {
+    public Order(int orderid, int id, int width, int length, int height, String roof, String shed, String date, String status) {
         this.orderid = orderid;
         this.id = id;
         this.width = width;
         this.length = length;
         this.height = height;
+        this.roof = roof;
+        this.shed = shed;
         this.date = date;
         this.status = status;
     }
@@ -71,6 +75,22 @@ public class Order {
         this.height = height;
     }
 
+    public String getRoof() {
+        return roof;
+    }
+
+    public void setRoof(String roof) {
+        this.roof = roof;
+    }
+
+    public String getShed() {
+        return shed;
+    }
+
+    public void setShed(String shed) {
+        this.shed = shed;
+    }
+    
     public String getDate() {
         return date;
     }
@@ -89,8 +109,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", height=" + height + ", date=" + date + ", status=" + status + '}';
+        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", height=" + height + ", roof=" + roof + ", shed=" + shed + ", date=" + date + ", status=" + status + '}';
     }
+
+    
 
 
     public static String empOrderToHtml() throws LoginSampleException {
@@ -107,6 +129,8 @@ public class Order {
                         + "<th>Length</th>"
                         + "<th>Width</th>"
                         + "<th>Height</th>"
+                        + "<th>Roof</th>"
+                        + "<th>Shed</th>"
                         + "<th>Status</th>"
                         + "</tr>";
                 
@@ -118,6 +142,8 @@ public class Order {
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"
+                        + "<td>" + orders.getRoof() + "</td>"
+                        + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
                 if (orders.getStatus().equals("pending")) {
@@ -154,6 +180,8 @@ public class Order {
                         + "<th>Length</th>"
                         + "<th>Width</th>"
                         + "<th>Height</th>"
+                        + "<th>Roof</th>"
+                        + "<th>Shed</th>"
                         + "<th>Status</th>"
                         + "</tr>";
                 
@@ -164,6 +192,8 @@ public class Order {
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"
+                        + "<td>" + orders.getRoof() + "</td>"
+                        + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
                 if (orders.getStatus().equals("pending")) {
@@ -200,6 +230,8 @@ public class Order {
                     + "<th>Length</th>"
                     + "<th>Width</th>"
                     + "<th>Height</th>"
+                    + "<th>Roof</th>"
+                    + "<th>Shed</th>"
                     + "<th>Status</th>"
                     + "</tr>";
 
@@ -210,6 +242,8 @@ public class Order {
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"
+                        + "<td>" + orders.getRoof() + "</td>"
+                        + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>"
                         + "</tr>";
 

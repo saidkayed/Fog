@@ -3,6 +3,7 @@ USE `fog` ;
 
 Drop table if exists `order`;
 Drop table if exists `user`;
+Drop table if exists `materials`;
 -- -----------------------------------------------------
 -- Table `fog`.`user`
 -- -----------------------------------------------------
@@ -26,6 +27,9 @@ CREATE TABLE `fog`.`order` (
   `id` INT(11) NOT NULL,
   `width` INT(11) NOT NULL,
   `length` INT(11) NOT NULL,
+  `height` INT(11) NOT NULL,
+  `roof` VARCHAR(90) NOT NULL,
+  `shed` VARCHAR(90) NOT NULL,
   `date` VARCHAR(90) NOT NULL,
   `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`orderid`),
@@ -41,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `fog`.`materiale` (
   `id` INT(11) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `price` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`));
 
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES 
