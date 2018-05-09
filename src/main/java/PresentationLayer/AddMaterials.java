@@ -20,10 +20,9 @@ public class AddMaterials extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
-        Materials mat = new Materials(id, name, price);
+        Materials mat = new Materials( name, price);
         
         LogicFacade.addMaterial(mat);
 

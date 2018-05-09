@@ -13,22 +13,21 @@ import java.util.ArrayList;
  */
 public class Materials {
 
-    private int id;
+    private int materialid;
     private String name;
     private int price;
 
-    public Materials(int id, String name, int price) {
-        this.id = id;
+    public Materials(String name, int price) {
         this.name = name;
         this.price = price;
     }
 
     public int getId() {
-        return id;
+        return materialid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int materialid) {
+        this.materialid = materialid;
     }
 
     public String getName() {
@@ -56,7 +55,7 @@ public class Materials {
 
             output = "<tbody>"
                     + "<tr>"
-                    + "<th>id</th>"
+                    + "<th>materialid</th>"
                     + "<th>Name</th>"
                     + "<th>Price</th>"
                     + "</tr>";

@@ -43,10 +43,10 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `fog`.`materials` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `materialid` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `price` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`materialid`))
 
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES 

@@ -23,11 +23,10 @@ public class MaterialsMapper {
     public static void addMaterial(Materials mat) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `order` (id, name, price) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO `materials` (name, price) VALUES ( ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, mat.getId());
-            ps.setString(2, mat.getName());
-            ps.setInt(3, mat.getPrice());
+            ps.setString(1, mat.getName());
+            ps.setInt(2, mat.getPrice());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -53,8 +52,8 @@ public class MaterialsMapper {
                 String name = rs.getString("name");
                 int price = rs.getInt("price");
 
-                Materials mat = new Materials(id, name, price);
-
+                Materials mat = new Materials(name, price);
+                mat.setId(id);
                 allMaterials.add(mat);
             }
         } catch (SQLException | ClassNotFoundException ex) {

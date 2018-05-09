@@ -33,8 +33,8 @@
         </nav>
                     
     <center>
-        <form name="AddMaterials" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="AddMaterials">
+        <form name="addmaterials" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="addmaterials">
             Name<br>
             <input class="form-control mr-sm-2" type="text" name="name" placeholder="name">
             <br>
