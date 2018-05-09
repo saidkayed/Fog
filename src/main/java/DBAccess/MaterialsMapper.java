@@ -48,12 +48,14 @@ public class MaterialsMapper {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                int id = rs.getInt("materialid");
                 String name = rs.getString("name");
                 int price = rs.getInt("price");
 
                 Materials mat = new Materials(name, price);
+                
                 mat.setId(id);
+                
                 allMaterials.add(mat);
             }
         } catch (SQLException | ClassNotFoundException ex) {
