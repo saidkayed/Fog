@@ -21,9 +21,12 @@ abstract class Command {
         commands.put("vieworderscustomer", new ViewOrdersCustomer());
         commands.put("sendorder", new SendOrder());
         commands.put("deleteorder", new DeleteOrder());
+        commands.put("deletematerial", new DeleteMaterial());
         commands.put("home", new Home());
+        commands.put("backto", new Home());
         commands.put("search", new EmpSearch());
         commands.put("viewmaterials", new ViewMaterials());
+        commands.put("backtoemployeviewmaterials", new backtoemployeviewmaterials());
         commands.put("addmaterial", new AddMaterial());
         commands.put("addmaterials", new AddMaterials());
 

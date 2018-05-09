@@ -45,7 +45,7 @@
         </form>
 
         <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="home">
+            <input type="hidden" name="command" value="backtoemployeviewmaterials">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
         </form>
     </center>

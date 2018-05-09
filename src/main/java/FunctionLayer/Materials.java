@@ -48,7 +48,7 @@ public class Materials {
 
     public static String empMaterialeToHtml() throws LoginSampleException {
 
-        String output = "<h2> No orders found in database</h2>";
+        String output = "<h2> No materials found in database</h2>";
         ArrayList<Materials> mat = LogicFacade.getAllMateriales();
 
         if (!mat.isEmpty()) {
@@ -65,8 +65,14 @@ public class Materials {
                         + "<td>" + mats.getId() + "</td>"
                         + "<td>" + mats.getName() + "</td>"
                         + "<td>" + mats.getPrice() + "</td>"
-                        +"</tr>"
-                        +"</tbody>";
+            
+                    +"<td><form name=\"deletematerial\" action=\"FrontController\" method=\"POST\">"
+                    + "<input type=\"hidden\" name=\"command\" value=\"deletematerial\">"
+                    + "<input type=\"hidden\" name=\"materialid\" value=\"" + mats.getId() + "\">"
+                    + "<input type=\"submit\" value=\"Delete Material\">"
+                    + "</form></td>"
+                    + "</tr>"
+                    + "</tbody>";
             }
         }
         return output;

@@ -35,6 +35,10 @@ public class LogicFacade {
     public static void addMaterial(Materials mat) throws LoginSampleException {
         MaterialsMapper.addMaterial(mat);
     }
+    
+    public static void deleteMaterialById(int materialid) throws LoginSampleException {
+        MaterialsMapper.deleteMaterialById(materialid);
+    }    
 
     public static ArrayList<Order> getAllOrders() throws LoginSampleException {
         return OrderMapper.getAllOrders();

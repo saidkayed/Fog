@@ -53,9 +53,9 @@ public class MaterialsMapper {
                 int price = rs.getInt("price");
 
                 Materials mat = new Materials(name, price);
-                
+
                 mat.setId(id);
-                
+
                 allMaterials.add(mat);
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -64,7 +64,16 @@ public class MaterialsMapper {
         return allMaterials;
     }
 
-    public static void deleteMateriale() {
+    public static void deleteMaterialById(int materialid) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "Delete from `materials` where materialid = ?";
+            PreparedStatement st = con.prepareStatement(SQL);
+            st.setInt(1, materialid);
+            st.executeUpdate();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
 
     }
 
