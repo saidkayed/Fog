@@ -3,9 +3,8 @@
     Created on : 23-04-2018, 13:34:44
     Author     : tobbe
 --%>
-
-<%@page import="FunctionLayer.User"%>
 <%@page import="FunctionLayer.Materials"%>
+<%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -19,7 +18,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <title>Employee home page</title>
-    </head>
+    
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -47,6 +46,7 @@
             <input type="hidden" name="command" value="logout">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
         </form>
+        </head>
     </center>
 </body>
 </html>
