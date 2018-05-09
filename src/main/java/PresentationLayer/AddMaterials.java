@@ -7,35 +7,27 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author tobbe
+ * @author SA
  */
-public class MakeOrder extends Command {
-
-    public MakeOrder() {
-    }
+public class AddMaterials extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        
+
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         int height = Integer.parseInt(request.getParameter("height"));
-        
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        LogicFacade.makeOrder(user, width, length, height);
-        
-        
-        
-        return "/WEB-INF/" + user.getRole() + "page";
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int price = Integer.parseInt(request.getParameter("price"));
+
+        LogicFacade.addMaterial(id, name, price);
+
+        return "/WEB-INF/" + "employeviewmaterials";
     }
-    
 }
