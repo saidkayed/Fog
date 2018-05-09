@@ -16,10 +16,18 @@ public class Materials {
     private int materialid;
     private String name;
     private int price;
+    private double dprice;
+    private double amount;
 
     public Materials(String name, int price) {
         this.name = name;
         this.price = price;
+    }
+    
+    public Materials(String name, double amount, double dprice){
+        this.name = name;
+        this.amount = amount;
+        this.dprice = dprice;
     }
 
     public int getId() {
@@ -46,10 +54,36 @@ public class Materials {
         this.price = price;
     }
 
+    public int getMaterialid() {
+        return materialid;
+    }
+
+    public void setMaterialid(int materialid) {
+        this.materialid = materialid;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(double dprice) {
+        this.dprice = dprice;
+    }
+    
+    
+
     public static String empMaterialeToHtml() throws LoginSampleException {
 
         String output = "<h2> No materials found in database</h2>";
-        ArrayList<Materials> mat = LogicFacade.getAllMateriales();
+        ArrayList<Materials> mat = LogicFacade.getAllMaterials();
 
         if (!mat.isEmpty()) {
 
@@ -65,16 +99,39 @@ public class Materials {
                         + "<td>" + mats.getId() + "</td>"
                         + "<td>" + mats.getName() + "</td>"
                         + "<td>" + mats.getPrice() + "</td>"
-            
-                    +"<td><form name=\"deletematerial\" action=\"FrontController\" method=\"POST\">"
-                    + "<input type=\"hidden\" name=\"command\" value=\"deletematerial\">"
-                    + "<input type=\"hidden\" name=\"materialid\" value=\"" + mats.getId() + "\">"
-                    + "<input type=\"submit\" value=\"Delete Material\">"
-                    + "</form></td>"
-                    + "</tr>"
-                    + "</tbody>";
+                        + "<td><form name=\"deletematerial\" action=\"FrontController\" method=\"POST\">"
+                        + "<input type=\"hidden\" name=\"command\" value=\"deletematerial\">"
+                        + "<input type=\"hidden\" name=\"materialid\" value=\"" + mats.getId() + "\">"
+                        + "<input type=\"submit\" value=\"Delete Material\">"
+                        + "</form></td>"
+                        + "</tr>"
+                        + "</tbody>";
             }
         }
         return output;
+    }
+
+    public static String materialToProductListHtml(ArrayList<Materials> materials) throws LoginSampleException {
+        String output = "<h2> Something went wrong </h2>";
+
+        if (!materials.isEmpty()) {
+            output = "<tbody>"
+                    + "<tr>"
+                    + "<th>Name</th>"
+                    + "<th>Amount</th>"
+                    + "<th>Price</th>"
+                    + "</tr>";
+
+            for (Materials mats : materials) {
+                output += "<tr>"
+                        + "<td>" + mats.getName() + "</td>"
+                        + "<td>" + mats.getAmount() + "</td>"
+                        + "<td>" + mats.getDprice() + "</td>";
+            }
+            output += "</tr>"
+                    + "</tbody>";
+        }
+        return output;
+
     }
 }

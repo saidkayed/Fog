@@ -104,7 +104,7 @@ public class OrderMapper {
         Order order = null;
         try{
             Connection con = Connector.connection();
-            String SQL = "select * from `order` where id = ?";
+            String SQL = "select * from `order` where orderid = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ps.setInt(1, orderid);

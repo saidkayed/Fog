@@ -29,6 +29,7 @@ abstract class Command {
         commands.put("backtoemployeviewmaterials", new backtoemployeviewmaterials());
         commands.put("addmaterial", new AddMaterial());
         commands.put("addmaterials", new AddMaterials());
+        commands.put("productlist", new ProductList());
 
     }
 

@@ -259,7 +259,6 @@ public class Order {
                         + "<td>" + orders.getRoof() + "</td>"
                         + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
-                        
 
                 if(orders.getStatus().equals("Accepted")){
                     output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"

@@ -48,8 +48,12 @@ public class LogicFacade {
         return OrderMapper.getOrderById(orderid);
     }
 
-    public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {
-        return MaterialsMapper.getAllMateriales();
+    public static ArrayList<Materials> getAllMaterials() throws LoginSampleException {
+        return MaterialsMapper.getAllMaterials();
+    }
+    
+    public static Materials getMaterialByName(String name) throws LoginSampleException {
+        return MaterialsMapper.getMaterialByName(name);
     }
 
     public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {

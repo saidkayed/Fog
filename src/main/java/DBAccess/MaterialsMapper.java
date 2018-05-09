@@ -38,7 +38,7 @@ public class MaterialsMapper {
         }
     }
 
-    public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {
+    public static ArrayList<Materials> getAllMaterials() throws LoginSampleException {
         ArrayList<Materials> allMaterials = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -79,6 +79,29 @@ public class MaterialsMapper {
 
     public static void editMateriale() {
 
+    }
+
+    public static Materials getMaterialByName(String name) throws LoginSampleException {
+        Materials mat = null;
+        try {
+            Connection con = Connector.connection();
+            String SQL = "select * from `materials` where name = ?";
+            PreparedStatement st = con.prepareStatement(SQL);
+            st.setString(1, name);
+
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("materialid");
+                int price = rs.getInt("price");
+
+                mat = new Materials(name, price);
+                mat.setId(id);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+
+        }
+        return mat;
     }
 
 }
