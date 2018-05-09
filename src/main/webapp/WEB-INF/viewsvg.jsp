@@ -13,6 +13,8 @@
     int length = (Integer) request.getAttribute("length");
     int width = (Integer) request.getAttribute("width");
     int height = (Integer) request.getAttribute("height");
+    String shed = (String) request.getAttribute("shed");
+    String roof = (String) request.getAttribute("roof");
 
     double doublelength = length;
     double doublewidth = width;
@@ -41,10 +43,9 @@
     <center>
         <br><br><br>
         <svg
-            width=<%=width + 20%> height=<%=length + 20%> viewBox="0 0 600 600" >
-        <rect x="20" y="20" height=<%=length + 20%> width=<%=width + 20%>
+            width="1000" height="1000">
+        <rect x="20" y="20" height=<%=length%> width=<%=width%>
               style="stroke:#000000; fill: lightgray"/>
-
         <defs>
         <marker id="beginArrow" 
                 markerWidth="9" markerHeight="9" 
@@ -95,28 +96,19 @@
         <text writing-mode="tb" x="10" y=<%=length / 2%> font-family="sans-serif" font-size="20px" fill="red"><%=length%> cm</text>
         <text x=<%=width / 2%> y=<%=length / 5 + 20%> font-family="sans-serif" font-size="20px" fill="blue"><%=square%> m2</text> 
 
-        </svg>
-        <svg
-            width=<%=width + 20%> height=<%=length + 20%> viewBox="0 0 600 600">
-        <line x1="10" y1="0" x2=<%=length + 20%> y2="0"
-              style="stroke:rgb(80,80,80);stroke-width:10"
-              />
-        <line 
-            x1="10" y1="0" x2="10" y2=<%=height + 20%>
-            style="stroke:rgb(80,80,80);stroke-width:10"
-
-            />
-        <line 
-            x1=<%=length + 20%> y1="0" x2=<%=length + 20%> y2=<%=height + 20%>
-            style="stroke:rgb(80,80,80);stroke-width:10"
-            />
-
-        <line 
-            x1=<%=length / 2 + 10%> y1=0 x2=<%=length / 2 + 10%> y2=<%=height + 20%>
-            style="stroke:rgb(80,80,80);stroke-width:10"
-
-            />
-
+        <%if(shed != null){
+            if(shed.equals("withshed1x1")){%>
+            <rect x=<%=width - 80%> y=<%=length - 80%> height="100" width="100"
+                style="stroke:#000000; fill: grey"/>
+            <text x=<%=width - 75%> y=<%=length - 50%> font-family="sans-serif" font-size="20px" fill="blue">1mx1m</text>
+            <text x=<%=width - 75%> y=<%=length - 30%> font-family="sans-serif" font-size="20px" fill="blue">shed</text>
+                <%}
+            if(shed.equals("withshed2x2")){%>
+            <rect x=<%=width - 180%> y=<%=length - 180%> height="200" width="200"
+                style="stroke:#000000; fill: grey"/>
+            <text x=<%=width - 120%> y=<%=length - 120%> font-family="sans-serif" font-size="20px" fill="blue">2mx2m Shed</text>
+                <%}
+        }%>
         </svg>
         <br><br><br>
         <form>
@@ -125,6 +117,9 @@
                 <input type="hidden" name="length" value=<%=length%>>
                 <input type="hidden" name="width" value=<%=width%>>
                 <input type="hidden" name="height" value=<%=height%>>
+                <input type="hidden" name="roof" value=<%=roof%>>
+                <input type="hidden" name="shed" value=<%=shed%>>
+                
 
 
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">

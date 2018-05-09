@@ -22,10 +22,7 @@ public class tester {
      * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
-       
-        LogicFacade lf = new LogicFacade();
-       User user = new User("test", "test", "customer");
-        lf.makeOrder(user, 200, 200, 200);
+
         
        
     }

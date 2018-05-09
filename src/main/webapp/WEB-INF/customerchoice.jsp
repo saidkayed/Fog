@@ -73,9 +73,10 @@
                         </select>
                         <br>
                         Shed:<br>
-                        <select name="roof" class="form-control" data-style="btn-success">
-                            <option value="withshed" name="withshed">uden skur</option>
-                            <option value="withoutshed" name="withoutshed">med skur</option>
+                        <select name="shed" class="form-control" data-style="btn-success">
+                            <option value="withoutshed" name="withoutshed">Uden skur</option>
+                            <option value="withshed1x1" name="withshed1x1">Med skur 1m x 1m</option>
+                            <option value="withshed2x2" name="withshed2x2">Med skur 2m x 2m</option>
                         </select>
                         <br>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Plan</button>
@@ -89,14 +90,6 @@
                 </td>
             </tr>
         </table>
-
-
-        <%if (message != null) {%>
-
-        <%=message%>
-
-        <%}%>
-
     </center>
 </body>
 </html>

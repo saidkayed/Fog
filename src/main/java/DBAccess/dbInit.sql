@@ -27,6 +27,9 @@ CREATE TABLE `fog`.`order` (
   `id` INT(11) NOT NULL,
   `width` INT(11) NOT NULL,
   `length` INT(11) NOT NULL,
+  `height` INT(11) NOT NULL,
+  `roof` VARCHAR(90) NOT NULL,
+  `shed` VARCHAR(90) NOT NULL,
   `date` VARCHAR(90) NOT NULL,
   `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`orderid`),
@@ -37,6 +40,7 @@ CREATE TABLE `fog`.`order` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = latin1;
+
 
 -- -----------------------------------------------------
 -- Table `fog`.`materials`

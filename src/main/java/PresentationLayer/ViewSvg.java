@@ -23,29 +23,24 @@ public class ViewSvg extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        
-//        String stringWidth = request.getParameter("width");
-//        String stringLength = request.getParameter("length");
-//        String stringHeight = request.getParameter("height");
-        //if (!stringWidth.isEmpty() && !stringLength.isEmpty() && !stringHeight.isEmpty()){
-        
+      
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         int height = Integer.parseInt(request.getParameter("height"));
+        String roof = request.getParameter("roof");
+        String shed = request.getParameter("shed");
+        
+        
 
-        //if(width < 200 || length < 200){
-            //throw new LoginSampleException("input must be at least 200");
-                //request.setAttribute("message", "Input must be at least 200");
-                //return "/WEB-INF/" + "customerchoice";
-       // }
         request.setAttribute("height", height);
         request.setAttribute("width", width);
         request.setAttribute("length", length);
+        request.setAttribute("roof", roof);
+        if(!shed.equals("without")){
+        request.setAttribute("shed", shed);
+        }
         return "/WEB-INF/" + "viewsvg";
-//        request.setAttribute("message", "Please fill out both input forms");
-//        return "/WEB-INF/" + "customerchoice";
-            
+        
         }
 }
-//    
-//}
+

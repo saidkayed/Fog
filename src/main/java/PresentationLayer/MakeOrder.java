@@ -27,11 +27,14 @@ public class MakeOrder extends Command {
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         int height = Integer.parseInt(request.getParameter("height"));
+        String roof = request.getParameter("roof");
+        String shed = request.getParameter("shed");
+                
         
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         
-        LogicFacade.makeOrder(user, width, length, height);
+        LogicFacade.makeOrder(user, width, length, height, roof, shed);
         
         
         

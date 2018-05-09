@@ -23,13 +23,13 @@ public class LogicFacade {
         return user;
     }
 
-    public static void makeOrder(User user, int width, int length, int height) throws LoginSampleException {
+    public static void makeOrder(User user, int width, int length, int height, String roof, String shed) throws LoginSampleException {
         Date date = new Date();
         String finalDate = date.toString();
 
         String status = "pending";
 
-        OrderMapper.createOrder(user, width, length, height, finalDate, status);
+        OrderMapper.createOrder(user, width, length, height, roof, shed, finalDate, status);
     }
 
     public static void addMaterial(Materials mat) throws LoginSampleException {
