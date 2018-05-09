@@ -32,8 +32,8 @@ public class LogicFacade {
         OrderMapper.createOrder(user, width, length, height, finalDate, status);
     }
 
-    public static void addMaterial(Materials mat, int id, String name, int price) throws LoginSampleException {
-        MaterialsMapper.addMaterial(mat, id, name, price);
+    public static void addMaterial(Materials mat) throws LoginSampleException {
+        MaterialsMapper.addMaterial(mat);
     }
 
     public static ArrayList<Order> getAllOrders() throws LoginSampleException {

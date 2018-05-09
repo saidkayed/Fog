@@ -7,6 +7,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Materials;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,14 +20,12 @@ public class AddMaterials extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        int width = Integer.parseInt(request.getParameter("width"));
-        int length = Integer.parseInt(request.getParameter("length"));
-        int height = Integer.parseInt(request.getParameter("height"));
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
-
-        LogicFacade.addMaterial(id, name, price);
+        Materials mat = new Materials(id, name, price);
+        
+        LogicFacade.addMaterial(mat);
 
         return "/WEB-INF/" + "employeviewmaterials";
     }
