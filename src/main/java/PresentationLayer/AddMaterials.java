@@ -21,11 +21,19 @@ public class AddMaterials extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
         String name = request.getParameter("name");
+        String stringPrice = request.getParameter("price");
+        
+        if(name.isEmpty() || stringPrice.isEmpty()){
+            String message = "Please fill out both forms when adding Materials";
+            request.setAttribute("message", message);
+            return "/WEB-INF/" + "addmaterial";
+        } else {
         int price = Integer.parseInt(request.getParameter("price"));
+        
         Materials mat = new Materials( name, price);
         
         LogicFacade.addMaterial(mat);
-
+    }
         return "/WEB-INF/" + "employeviewmaterials";
     }
 }

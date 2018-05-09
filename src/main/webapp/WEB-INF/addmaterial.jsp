@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <%
     User user = (User) session.getAttribute("user");
+    String message = (String) request.getAttribute("message");
+
 %>
 <html>
     <head>
@@ -43,6 +45,12 @@
             <br>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Materiale</button>
         </form>
+        <%if (message != null){%>
+        
+        <%=message%>
+         
+            
+        <%}%>
 
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="backtoemployeviewmaterials">
