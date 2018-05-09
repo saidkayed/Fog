@@ -25,6 +25,7 @@ abstract class Command {
         commands.put("search", new EmpSearch());
         commands.put("viewmaterials", new ViewMaterials());
         commands.put("addmaterial", new AddMaterial());
+        commands.put("addmaterials", new AddMaterials());
 
     }
 

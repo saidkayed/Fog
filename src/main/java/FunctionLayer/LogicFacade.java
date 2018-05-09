@@ -31,11 +31,9 @@ public class LogicFacade {
 
         OrderMapper.createOrder(user, width, length, height, finalDate, status);
     }
-    
-    public static Materials addMaterial(int id, String name, int price) throws LoginSampleException {
-        Materials mat = new Materials(id, name, price);
-        MaterialsMapper.addMaterial(mat);
-        return mat;
+
+    public static void addMaterial(Materials mat, int id, String name, int price) throws LoginSampleException {
+        MaterialsMapper.addMaterial(mat, id, name, price);
     }
 
     public static ArrayList<Order> getAllOrders() throws LoginSampleException {
@@ -49,13 +47,16 @@ public class LogicFacade {
     public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {
         return OrderMapper.getAllOrdersByUser(user);
     }
-    public static void sendOrderById(int orderid) throws LoginSampleException{
+
+    public static void sendOrderById(int orderid) throws LoginSampleException {
         OrderMapper.sendOrderById(orderid);
     }
-    public static void deleteOrderById(int orderid) throws LoginSampleException{
+
+    public static void deleteOrderById(int orderid) throws LoginSampleException {
         OrderMapper.deleteOrderById(orderid);
     }
-    public static User getUserByEmail(String email) throws LoginSampleException{
+
+    public static User getUserByEmail(String email) throws LoginSampleException {
         return UserMapper.getUserByEmail(email);
     }
 }
