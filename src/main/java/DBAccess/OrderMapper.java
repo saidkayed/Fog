@@ -99,6 +99,34 @@ public class OrderMapper {
         }
         return allOrders;
     }
+    
+    public static Order getOrderById(int orderid) throws LoginSampleException{
+        Order order = null;
+        try{
+            Connection con = Connector.connection();
+            String SQL = "select * from `order` where id = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, orderid);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                int width = rs.getInt("width");
+                int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
+                String date = rs.getString("date");
+                String status = rs.getString("status");
+                
+                order = new Order(orderid, id, width, length, height, roof, shed, date, status);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+    }
+        return order;
+    }
 
     public static void sendOrderById(int orderid) throws LoginSampleException {
         Order output = null;

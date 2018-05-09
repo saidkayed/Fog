@@ -43,6 +43,10 @@ public class LogicFacade {
     public static ArrayList<Order> getAllOrders() throws LoginSampleException {
         return OrderMapper.getAllOrders();
     }
+    
+    public static Order getOrderById(int orderid) throws LoginSampleException {
+        return OrderMapper.getOrderById(orderid);
+    }
 
     public static ArrayList<Materials> getAllMateriales() throws LoginSampleException {
         return MaterialsMapper.getAllMateriales();

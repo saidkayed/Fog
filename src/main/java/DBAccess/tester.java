@@ -23,7 +23,9 @@ public class tester {
      */
     public static void main(String[] args) throws LoginSampleException {
 
+        Order order = LogicFacade.getOrderById(1);
         
+        System.out.println(order.getHeight());
        
     }
     

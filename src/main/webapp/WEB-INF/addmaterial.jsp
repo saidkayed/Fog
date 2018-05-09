@@ -35,22 +35,39 @@
         </nav>
                     
     <center>
-        <form name="addmaterials" action="FrontController" method="POST">
+        <form id="material" name="addmaterials" action="FrontController" method="POST"
+                    data-fv-framework="bootstrap"
+                    data-fv-icon-valid="glyphicon glyphicon-ok"
+                    data-fv-icon-invalid="glyphicon glyphicon-remove"
+                    data-fv-icon-validating="glyphicon glyphicon-refresh">
             <input type="hidden" name="command" value="addmaterials">
-            Name<br>
-            <input class="form-control mr-sm-2" type="text" name="name" placeholder="name">
-            <br>
-            Price<br>
-            <input class="form-control mr-sm-2" type="number" name="price" placeholder="price">
+            <div class="form-group">
+        <label class="col-xs-3 control-label">Material Name</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="name"
+                required
+                data-fv-notempty-message="The material name is required" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Material Price</label>
+        <div class="col-xs-5">
+            <input type="number" class="form-control" name="price"
+                required
+                data-fv-notempty-message="The material price is required" />
+        </div>
+    </div>
             <br>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Materiale</button>
         </form>
-        <%if (message != null){%>
         
-        <%=message%>
-         
-            
-        <%}%>
+        <script>
+$(document).ready(function() {
+    $('#material').formValidation();
+});
+</script>
+
 
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="backtoemployeviewmaterials">
