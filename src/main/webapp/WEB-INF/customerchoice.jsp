@@ -50,7 +50,7 @@
                             <option type="number" value="390" >390</option>
                             <option type="number" value="450" >450</option>
                             <option type="number" value="480" >480</option>
-                            <option type="number" value="510" >510</option>
+                            <option type="number" value="500" >510</option>
                         </select>
 
                         <br>

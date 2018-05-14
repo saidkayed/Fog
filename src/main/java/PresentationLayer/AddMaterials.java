@@ -24,7 +24,11 @@ public class AddMaterials extends Command {
        
         int price = Integer.parseInt(request.getParameter("price"));
         
-        Materials mat = new Materials( name, price);
+        String length = request.getParameter("length");
+        
+        String description = request.getParameter("description");
+        
+        Materials mat = new Materials(name, price, length, description);
         
         LogicFacade.addMaterial(mat);
     

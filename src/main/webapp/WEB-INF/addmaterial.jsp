@@ -57,6 +57,23 @@
                            required
                            data-fv-notempty-message="The material price is required" />
                 </div>
+                
+                <div class="form-group">
+                <label class="col-xs-3 control-label">Material Length</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="length"
+                           required
+                           data-fv-notempty-message="The material length is required" />
+                           
+                </div>
+                
+                <div class="form-group">
+                <label class="col-xs-3 control-label">Material Description</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="description"
+                           required
+                           data-fv-notempty-message="The material description is required" />
+                </div>
             </div>
             <br>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Materiale</button>
