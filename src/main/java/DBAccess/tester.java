@@ -6,14 +6,13 @@
 package DBAccess;
 
 import FunctionLayer.CarportCalculator;
-import static FunctionLayer.CarportCalculator.spærCalculator;
-import static FunctionLayer.CarportCalculator.stolpeCalculator;
-import static FunctionLayer.CarportCalculator.stolpeHeightCalculator;
+
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Materials;
 import FunctionLayer.Order;
 import FunctionLayer.User;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -21,12 +20,13 @@ import java.util.ArrayList;
  * @author tobbe
  */
 public class tester {
-
+    
     /**
      * @param args the command line arguments
      * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
+<<<<<<< HEAD
 
         
         Materials planke = LogicFacade.getMaterialByName("Planke(10cm*20cm) (meter pris)");
@@ -34,6 +34,13 @@ public class tester {
         System.out.println(planke.getPrice());        
         
        
+=======
+        Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
+                System.out.println(skurPlanke.getPrice());
+            
+>>>>>>> 601390a46030f0f477a94b0e5499af4730667eed
     }
+    
+            
     
 }

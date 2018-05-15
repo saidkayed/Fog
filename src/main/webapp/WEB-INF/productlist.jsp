@@ -26,7 +26,12 @@ User user = (User) session.getAttribute("user");
          <table>
 
                 <%=Materials.materialToProductListHtml(materials)%>
+                
+                
+                
             </table>
+                <br>
+                <h4> Total price : <%=Materials.materialTotalPrice(materials)%></h4>
             
            <%if (user.getRole().equals("customer")){%>
            <form action="FrontController" method="Post">

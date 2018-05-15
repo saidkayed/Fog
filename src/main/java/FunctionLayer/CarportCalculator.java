@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class CarportCalculator {
     
+    
+    
     public static ArrayList<Materials> calculator(int orderid) throws LoginSampleException{
         ArrayList<Materials> allMaterials = new ArrayList();
         Order order = LogicFacade.getOrderById(orderid);
@@ -23,54 +25,103 @@ public class CarportCalculator {
         String stringRoof = order.getRoof();
         String stringShed = order.getShed();
         
-        //vores planker er 20*10*x
+        //vores planker er 20*10*2 og 20*10*5
+        int spær5Amount;
         
-        //carport omkreds
-        double plankLength = (width*2)+(length*2);
+
+        //planker til carport omkreds(width og length kommer aldrig under 2)
+        int plank5Amount = 4;
+        
+        Materials planke5 = LogicFacade.getMaterialByName("Planke(20x10x5)");
+        double plankePris = planke5.getPrice()*plank5Amount;
+        
+        Materials finalPlanke = new Materials(planke5.getName(), planke5.getLength(), plank5Amount, "stk", planke5.getDescription(), plankePris);
+        allMaterials.add(finalPlanke);
+        
         
         //spær
-        double spærLength = width-20;
-        double spærAmount = spærCalculator(length);
-        plankLength += (spærLength*spærAmount);
+        spær5Amount = spærCalculator(length);
+        
+        Materials spær = LogicFacade.getMaterialByName("Spaer(20x10x5)");
+        double spærPris = spær.getPrice()*spær5Amount;
+        
+        Materials finalSpær = new Materials(spær.getName(), spær.getLength(), spær5Amount, "stk", spær.getDescription(), spærPris);
+        allMaterials.add(finalSpær);
+        
         
         //stolper
         double stolpeHeight = stolpeHeightCalculator(height);
-        double stolpeAmount = stolpeCalculator(length);
-        double stolpeLength = stolpeAmount*stolpeHeight;
+        int stolpeAmount = stolpeCalculator(length);
         
-        //roof
-        double roofArea = length*width;
-        
-        
-        //Material definition planke
-        //Omkreds' planker
-        Materials planke = LogicFacade.getMaterialByName("Planke(10cm*20cm) (meter pris)");
-        double plankePris = planke.getPrice()*(plankLength/100);
-        
-        Materials finalPlanke = new Materials("Planke(10cm*20cm) (meter pris)", plankLength/100, plankePris);
-        allMaterials.add(finalPlanke);
-        
-        //Spær
-        Materials spær = LogicFacade.getMaterialByName("Spaer(10cm*20cm) (stk)");
-        double spærPris = spær.getPrice()*spærAmount;
-        
-        Materials finalSpær = new Materials("Spaer(10cm*20cm) (stk)", spærAmount, spærPris);
-        allMaterials.add(finalSpær);
-        
-        //Stolpe
-        Materials stolpe = LogicFacade.getMaterialByName("Stolpe (10cm*10cm) (stk)");
+        Materials stolpe = LogicFacade.getMaterialByName("Stolpe");
         double stolpePris = stolpe.getPrice()*stolpeAmount;
         
-        Materials finalStolpe = new Materials("Stolpe (10cm*10cm) (stk)", stolpeAmount, stolpePris);
+        Materials finalStolpe = new Materials("Stolpe", stolpe.getLength(), stolpeAmount, "stk", stolpe.getDescription(), stolpePris);
         allMaterials.add(finalStolpe);
         
-        //Roof
-        Materials roof = LogicFacade.getMaterialByName("Trapez Plade (fladt tag) (pr m2)");
-        double roofPrice = roof.getPrice()*(roofArea/10000);
         
-        Materials finalRoof = new Materials("Trapez Plade (fladt tag) (pr m2)", roofArea/10000, roofPrice);
+        //roof
+        double roofArea;
+        if (stringRoof.equals("fladt")){
+        //roof fladt
+        roofArea = ((length*width)/10000);
+        
+        Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
+        double roofPrice = roof.getPrice()*roofArea;
+        
+        Materials finalRoof = new Materials("Trapez Plade", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
         allMaterials.add(finalRoof);
         
+        } else {   
+        //planker til tag med rejsning
+        double hypotenuse = (width/2) / Math.cos(20);
+        double højdeKatete = (width/2) * Math.tan(20);
+        
+        double roofPlank2Amount = højdeKatete * spær5Amount;
+        double roofPlank5Amount = roofPlank2Amount *2;
+
+        //trapezplade til tag med rejsning
+        roofArea = (((length*hypotenuse)*2)/10000);
+        
+        Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
+        double roofPrice = roof.getPrice()*roofArea;
+        
+        Materials finalRoof = new Materials("Trapez Plade", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
+        allMaterials.add(finalRoof);
+        
+        }
+        
+        //shed
+        //shed door = 210 høj 70 bred
+        if(!stringShed.equals("withoutshed")){
+            int skurPlank;
+            int door = (210/20) * 70;
+            if(stringShed.equals("withshed1x1")){
+                skurPlank = (((height/20) *100*4) / 2) - door;
+                
+                Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
+                double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
+                
+                Materials finalSkurPlanke = new Materials("Skur planke(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), skurPlankePris);
+                allMaterials.add(finalSkurPlanke);
+            } else {
+                skurPlank = ((height/20) *200*4) - door;
+                
+                Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
+                double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
+                
+                Materials finalSkurPlanke = new Materials("Skur planke(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), Math.ceil(skurPlankePris));
+                allMaterials.add(finalSkurPlanke);
+            }
+            Materials shedDoor = LogicFacade.getMaterialByName("Skur doer");
+            double shedDoorPrice = shedDoor.getPrice();
+            
+            Materials finalShedDoor = new Materials("Skur doer", shedDoor.getLength(), 1, "stk", shedDoor.getDescription(), shedDoor.getPrice());
+            allMaterials.add(finalShedDoor);
+            
+            
+        }
+
         return allMaterials;
     }
     
@@ -87,10 +138,11 @@ public class CarportCalculator {
     public static int stolpeCalculator(int length) throws LoginSampleException{
         int stolpeAmount;
         
+        
         if(length%200 == 0){
-            stolpeAmount = length/200;
+            stolpeAmount = (length/200) *2;
         } else {
-            stolpeAmount = length/200 + 1;
+            stolpeAmount = (length/200 + 1 )*2;
         } return stolpeAmount;
     }
     public static int stolpeHeightCalculator(int height) throws LoginSampleException{
@@ -101,4 +153,6 @@ public class CarportCalculator {
             stolpeHeight = height-20+100;
         } return stolpeHeight;
     }
+
 }
+

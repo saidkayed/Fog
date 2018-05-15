@@ -18,6 +18,10 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = latin1;
 
+INSERT INTO `user` VALUES 
+(1,'123','123','customer'),
+(3,'456','456','employee');
+
 
 -- -----------------------------------------------------
 -- Table `fog`.`order`
@@ -49,12 +53,14 @@ DEFAULT CHARACTER SET = latin1;
 CREATE TABLE IF NOT EXISTS `fog`.`materials` (
   `materialid` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `price` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`materialid`))
+  `price` INT(11) NOT NULL,
+  `length` VARCHAR(45)NULL,
+  `description` VARCHAR(45)NULL,
+  PRIMARY KEY (`materialid`));
 
-LOCK TABLES `user` WRITE;
-INSERT INTO `user` VALUES 
-(1,'123','123','customer'),
-(3,'456','456','employee');
-UNLOCK TABLES;
-
+INSERT INTO `materials` VALUES 
+('1', 'Planke(10cm*20cm) (meter pris)', '10', '', ''),
+('2', 'Spaer(10cm*20cm) (stk)', '30', '', ''),
+('3', 'Stolpe (10cm*10cm) (stk)', '50', '', ''),
+('4', 'Trapez Plade (fladt tag) (pr m2)', '30', '', ''),
+('5', 'Skur doer', '1000', '', '');
