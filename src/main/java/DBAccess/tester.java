@@ -31,9 +31,7 @@ public class tester {
         
         Materials planke = LogicFacade.getMaterialByName("Planke(10cm*20cm) (meter pris)");
         
-        System.out.println(planke.getPrice());
-        //int plankePris = planke.getPrice()*(plankLength/100);
-        
+        System.out.println(planke.getPrice());        
         
        
     }
