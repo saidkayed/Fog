@@ -26,9 +26,17 @@ public class tester {
      * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
-        Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
-                System.out.println(skurPlanke.getPrice());
-            
+        
+        double angleToRaidans = Math.toRadians(20);
+        double width = 300;
+        double højdeKatete = (width/2) * Math.tan(angleToRaidans);
+                    
+        
+        System.out.println(højdeKatete);
+        
+        
+        
+        
     }
     
             
