@@ -32,11 +32,12 @@
             </div>
         </nav>
     <center>
+        <br>
         <form name="orderpage" action="FrontController" method="POST">
             <input type="hidden" name="command" value="orderpage">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Order Page</button>
         </form>
-
+        <br>
         <form name="vieworderscustomer" action="FrontController" method="POST">
             <input type="hidden" name="command" value="vieworderscustomer">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Orders</button>
