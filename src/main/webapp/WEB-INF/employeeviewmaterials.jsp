@@ -40,8 +40,8 @@
             </table>
         </div>
         <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="addmaterial">
-            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="AddMaterial">
+            <input type="hidden" name="command" value="addmaterialnavigation">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Add Material">
         </form>
         <form action="FrontController" method="Post">
             <input type="hidden" name="command" value="home">

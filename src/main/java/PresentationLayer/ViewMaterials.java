@@ -21,6 +21,6 @@ public class ViewMaterials extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        return "/WEB-INF/" + "employeviewmaterials";
+        return "/WEB-INF/" + "employeeviewmaterials";
     }
 }

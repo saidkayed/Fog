@@ -32,6 +32,6 @@ public class AddMaterials extends Command {
         
         LogicFacade.addMaterial(mat);
     
-        return "/WEB-INF/" + "employeviewmaterials";
+        return "/WEB-INF/" + "employeeviewmaterials";
     }
 }

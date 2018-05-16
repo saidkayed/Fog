@@ -28,12 +28,13 @@ public class Materials {
         this.length = length;
         this.description = description;
     }
-    
+    /*
     public Materials(String name, double amount, double dprice){
         this.name = name;
         this.amount = amount;
         this.dprice = dprice;
     }
+*/
     public Materials(String name, String length, double amount, String unit, String description, double dprice){
      this.name = name;   
      this.length = length;

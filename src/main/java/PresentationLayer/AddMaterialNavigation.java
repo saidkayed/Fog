@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sercan
  */
-public class AddMaterial extends Command {
+public class AddMaterialNavigation extends Command {
 
-    public AddMaterial() {
+    public AddMaterialNavigation() {
     }
 
     @Override

@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sercan
  */
-public class backtoemployeviewmaterials extends Command {
+public class BackToEmployeeViewMaterials extends Command {
 
-    public backtoemployeviewmaterials() {
+    public BackToEmployeeViewMaterials() {
     }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
-        return "/WEB-INF/" + "employeviewmaterials";
+        return "/WEB-INF/" + "employeeviewmaterials";
     }
     
 }
