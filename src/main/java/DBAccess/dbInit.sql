@@ -11,6 +11,7 @@ CREATE TABLE `fog`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(90) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
+  `phone` INT(11) NOT NULL,
   `role` VARCHAR(45) NOT NULL DEFAULT 'customer',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
@@ -19,8 +20,8 @@ AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = latin1;
 
 INSERT INTO `user` VALUES 
-(1,'123','123','customer'),
-(3,'456','456','employee');
+(1,'123','123',12341234,'customer'),
+(3,'456','456',23452345,'employee');
 
 
 -- -----------------------------------------------------
@@ -59,8 +60,13 @@ CREATE TABLE IF NOT EXISTS `fog`.`materials` (
   PRIMARY KEY (`materialid`));
 
 INSERT INTO `materials` VALUES 
-('1', 'Planke(10cm*20cm) (meter pris)', '10', '', ''),
-('2', 'Spaer(10cm*20cm) (stk)', '30', '', ''),
-('3', 'Stolpe (10cm*10cm) (stk)', '50', '', ''),
-('4', 'Trapez Plade (fladt tag) (pr m2)', '30', '', ''),
-('5', 'Skur doer', '1000', '', '');
+('1', 'Plank(20x10x5)', '20', '5 meters', 'Plank, 5 meters long used for frame'),
+('2', 'Rafter(20x10x5)', '20', '5 meters', 'Rafter is used to support'),
+('3', 'Pillar', '30', 'arbitrary', 'Pillar with arbitrary length'),
+('4', 'Trapezoidal plate', '30', 'm2', 'Trapezoidal plate used for roof price pr m2'),
+('5', 'Roof Plank(20x10x5)', '20', 'meter', 'Roof Plank used for roof support'),
+('6', 'Roof Plank(20x10x2)', '10', 'meter', 'Roof Plank used for roof support'),
+('7', 'Shed Plank(20x10x2)', '10', 'meter', 'Shed planks used for shed'),
+('8', 'Shed door', '1000', '210cm x 70cm', 'Shed door for the shed'),
+('9', 'Screws', '1', '5cm', 'Screws for the planks'),
+('10', 'Top Screws', '1', '5cm', 'Screws for roof plates');
