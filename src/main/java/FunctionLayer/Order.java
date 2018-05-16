@@ -90,7 +90,7 @@ public class Order {
     public void setShed(String shed) {
         this.shed = shed;
     }
-    
+
     public String getDate() {
         return date;
     }
@@ -112,33 +112,29 @@ public class Order {
         return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", height=" + height + ", roof=" + roof + ", shed=" + shed + ", date=" + date + ", status=" + status + '}';
     }
 
-    
-
-
     public static String empOrderToHtml() throws LoginSampleException {
 
         String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrders();
-        
-            if (!order.isEmpty()) {
 
-                output = "<tbody>"
-                        + "<tr>"
-                        + "<th>Userid</th>"
-                        + "<th>Orderid</th>"
-                        + "<th>Phone</th>"
-                        + "<th>Length</th>"
-                        + "<th>Width</th>"
-                        + "<th>Height</th>"
-                        + "<th>Roof</th>"
-                        + "<th>Shed</th>"
-                        + "<th>Status</th>"
-                        + "</tr>";
-                
-                for (Order orders : order) {
-                    int phone = LogicFacade.getPhoneByUserId(orders.getId());
+        if (!order.isEmpty()) {
+
+            output = "<tbody>"
+                    + "<tr>"
+                    + "<th>Userid</th>"
+                    + "<th>Orderid</th>"
+                    + "<th>Phone</th>"
+                    + "<th>Length</th>"
+                    + "<th>Width</th>"
+                    + "<th>Height</th>"
+                    + "<th>Roof</th>"
+                    + "<th>Shed</th>"
+                    + "<th>Status</th>"
+                    + "</tr>";
+
+            for (Order orders : order) {
+                int phone = LogicFacade.getPhoneByUserId(orders.getId());
                 output += "<tr>"
-                
                         + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + phone + "</td>"
@@ -155,15 +151,14 @@ public class Order {
                             + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
                             + "<input type=\"submit\" value=\"Send Order\">"
                             + "</form></td>";
-                           
+
                 }
-                
-                 output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
-                            + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
-                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                            + "<input type=\"submit\" value=\"Show Productlist\">"
-                            + "</form></td>"
-                 
+
+                output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
+                        + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
+                        + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                        + "<input type=\"submit\" value=\"Show Productlist\">"
+                        + "</form></td>"
                         + "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
                         + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
                         + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
@@ -175,28 +170,28 @@ public class Order {
         }
         return output;
     }
-    
-     public static String empOrderToHtmlByEmail(User user) throws LoginSampleException {
+
+    public static String empOrderToHtmlByEmail(User user) throws LoginSampleException {
 
         String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
 
-            if (!order.isEmpty()) {
+        if (!order.isEmpty()) {
 
-                output = "<tbody>"
-                        + "<tr>"
-                        + "<th>Userid</th>"
-                        + "<th>Orderid</th>"
-                        + "<th>Phone</th>"
-                        + "<th>Length</th>"
-                        + "<th>Width</th>"
-                        + "<th>Height</th>"
-                        + "<th>Roof</th>"
-                        + "<th>Shed</th>"
-                        + "<th>Status</th>"
-                        + "</tr>";
-                
-                for (Order orders : order) {
+            output = "<tbody>"
+                    + "<tr>"
+                    + "<th>Userid</th>"
+                    + "<th>Orderid</th>"
+                    + "<th>Phone</th>"
+                    + "<th>Length</th>"
+                    + "<th>Width</th>"
+                    + "<th>Height</th>"
+                    + "<th>Roof</th>"
+                    + "<th>Shed</th>"
+                    + "<th>Status</th>"
+                    + "</tr>";
+
+            for (Order orders : order) {
                 output += "<tr>"
                         + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
@@ -216,11 +211,10 @@ public class Order {
                             + "</form></td>";
                 }
                 output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
-                            + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
-                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                            + "<input type=\"submit\" value=\"Show Productlist\">"
-                            + "</form></td>"
-                        
+                        + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
+                        + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
+                        + "<input type=\"submit\" value=\"Show Productlist\">"
+                        + "</form></td>"
                         + "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
                         + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
                         + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
@@ -232,8 +226,6 @@ public class Order {
         }
         return output;
     }
-    
-    
 
     public static String userOrderToHtml(User user) throws LoginSampleException {
         String output = "<h2> You have not made any orders</h2>";
@@ -266,7 +258,7 @@ public class Order {
                         + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
-                if(orders.getStatus().equals("Accepted")){
+                if (orders.getStatus().equals("Accepted")) {
                     output += "<td><form name=\"productlist\" action=\"FrontController\" method=\"POST\">"
                             + "<input type=\"hidden\" name=\"command\" value=\"productlist\">"
                             + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
