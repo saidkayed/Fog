@@ -54,22 +54,22 @@
 
             <%if (user != null) {%>
 
+            <div class="table-responsive">
+                <table class="table table-bordered">
 
-            <table>
+                    <%=Order.empOrderToHtmlByEmail(user.getEmail())%>
+                </table>
+                <%} else {%>
+                <table class="table table-bordered">
 
-                <%=Order.empOrderToHtmlByEmail(user.getEmail())%>
-            </table>
-            <%} else {%>
-            <table>
-
-                <%=Order.empOrderToHtml()%>
-            </table>
-            <%}%>
-        </div>
-        <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="home">
-            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
-        </form>
+                    <%=Order.empOrderToHtml()%>
+                </table>
+                <%}%>
+            </div>
+            <form action="FrontController" method="Post">
+                <input type="hidden" name="command" value="home">
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
+            </form>
     </center>
-    </body>
+</body>
 </html>

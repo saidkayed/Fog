@@ -4,7 +4,7 @@
     Author     : Sercan
 --%>
 
-<%@page import="FunctionLayer.Materials"%>
+<%@page import="FunctionLayer.RenderMaterials"%>
 <%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
@@ -35,8 +35,8 @@
             </div>
         </nav>
         <div>
-            <table>
-                <%=Materials.empMaterialeToHtml()%>
+             <table class="table table-dark">
+                <%=RenderMaterials.empMaterialeToHtml()%>
             </table>
         </div>
         <form action="FrontController" method="Post">
@@ -48,6 +48,6 @@
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
         </form>
     </center>
-    </body>
+</body>
 </html>
 
