@@ -4,9 +4,9 @@
     Author     : tobbe
 --%>
 
+<%@page import="FunctionLayer.RenderOrder"%>
 <%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -22,7 +22,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>        
-        <title>JSP Page</title>
+        <title>employeeorder</title>
     </head>
     <body>
     <center>
@@ -55,14 +55,14 @@
 
             <%if (user != null) {%>
 
-            <div class="table-responsive">
+            <div >
                 <table class="table table-bordered">
-                    <%=Order.empOrderToHtmlByEmail(user)%>
+                    <%=RenderOrder.empOrderToHtmlByEmail(user)%>
                 </table>
                 <%} else {%>
                 <table class="table table-bordered">
 
-                    <%=Order.empOrderToHtml()%>
+                    <%=RenderOrder.empOrderToHtml()%>
                 </table>
                 <%}%>
             </div>

@@ -4,9 +4,9 @@
     Author     : tobbe
 --%>
 
+<%@page import="FunctionLayer.RenderOrder"%>
 <%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -19,7 +19,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <title>customerorder</title>
 
     </head>
     <body>
@@ -37,7 +37,7 @@
         <div class="container">
             <h1>All orders made by <%=user.getEmail()%> </h1><br>
             <table class="table table-bordered">
-                <%=Order.userOrderToHtml(user)%>
+                <%=RenderOrder.userOrderToHtml(user)%>
             </table>
         </div>
         <form action="FrontController" method="Post">

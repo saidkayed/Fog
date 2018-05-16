@@ -4,8 +4,9 @@
     Author     : tobbe
 --%>
 
-<%@page import="FunctionLayer.User"%>
 <%@page import="FunctionLayer.Materials"%>
+<%@page import="FunctionLayer.RenderMaterials"%>
+<%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ User user = (User) session.getAttribute("user");
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>         
-        <title>JSP Page</title>
+        <title>Productlist</title>
     </head>
     <body>
         <div>
@@ -31,13 +32,13 @@ User user = (User) session.getAttribute("user");
          <div class="container">
             <table class="table table-bordered">
 
-                <%=Materials.materialToProductListHtml(materials)%>
+                <%=RenderMaterials.materialToProductListHtml(materials)%>
                 
                 
                 
             </table>
                 <br>
-                <h4> Total price : <%=Materials.materialTotalPrice(materials)%> kr</h4>
+                <h4> Total price : <%=RenderMaterials.materialTotalPrice(materials)%> kr</h4>
             
            <%if (user.getRole().equals("customer")){%>
            <form action="FrontController" method="Post">

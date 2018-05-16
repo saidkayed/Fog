@@ -43,7 +43,7 @@ public class CarportCalculator {
         int plank5Amount = 4;
         screws = 16;
         
-        Materials planke5 = LogicFacade.getMaterialByName("Planke(20x10x5)");
+        Materials planke5 = LogicFacade.getMaterialByName("Plank(20x10x5)");
         double plankePris = planke5.getPrice()*plank5Amount;
         
         Materials finalPlanke = new Materials(planke5.getName(), planke5.getLength(), plank5Amount, "stk", planke5.getDescription(), plankePris);
@@ -59,7 +59,7 @@ public class CarportCalculator {
         int spær5Amount = spærAmountCalculator(length);
         screws += spær5Amount * 2;
         
-        Materials spær = LogicFacade.getMaterialByName("Spaer(20x10x5)");
+        Materials spær = LogicFacade.getMaterialByName("Rafter(20x10x5)");
         double spærPris = spær.getPrice()*spær5Amount;
         
         Materials finalSpær = new Materials(spær.getName(), spær.getLength(), spær5Amount, "stk", spær.getDescription(), spærPris);
@@ -78,10 +78,10 @@ public class CarportCalculator {
         int stolpeAmount = stolpeAmountCalculator(length);
         screws += stolpeAmount *4;
         
-        Materials stolpe = LogicFacade.getMaterialByName("Stolpe");
+        Materials stolpe = LogicFacade.getMaterialByName("Pillar");
         double stolpePris = stolpe.getPrice()*stolpeAmount;
         
-        Materials finalStolpe = new Materials("Stolpe", stringStolpeHeight + " meter", stolpeAmount, "stk", stolpe.getDescription(), stolpePris);
+        Materials finalStolpe = new Materials("Pillar", stringStolpeHeight + " meter", stolpeAmount, "stk", stolpe.getDescription(), stolpePris);
         allMaterials.add(finalStolpe);
         }
         
@@ -99,10 +99,10 @@ public class CarportCalculator {
         roofArea = ((length*width)/10000);
         topScrews = Math.ceil(roofArea) * 4;
         
-        Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
+        Materials roof = LogicFacade.getMaterialByName("Trapezoidal plate");
         double roofPrice = roof.getPrice()*roofArea;
         
-        Materials finalRoof = new Materials("Trapez Plade", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
+        Materials finalRoof = new Materials("Trapezoidal plate", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
         allMaterials.add(finalRoof);
         
         } else {   
@@ -121,10 +121,10 @@ public class CarportCalculator {
             screws += roofPlank5Amount * 4;
             
             
-        Materials roofPlank5 = LogicFacade.getMaterialByName("Tag planke(20x10x5)");
+        Materials roofPlank5 = LogicFacade.getMaterialByName("Roof Plank(20x10x5)");
         double roofPlank5Price = roofPlank5.getPrice() * roofPlank5Amount;
         
-        Materials finalRoofPlank5 = new Materials("Tag planke(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
+        Materials finalRoofPlank5 = new Materials("Roof Plank(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
         allMaterials.add(finalRoofPlank5);
         
         } else {
@@ -133,16 +133,16 @@ public class CarportCalculator {
             roofPlank5Amount = roofPlank2Amount*2;
             screws += (roofPlank5Amount *4) + (roofPlank2Amount * 4);
             
-        Materials roofPlank2 = LogicFacade.getMaterialByName("Tag planke(20x10x2)");
+        Materials roofPlank2 = LogicFacade.getMaterialByName("Roof Plank(20x10x2)");
         double roofPlank2Price = roofPlank2.getPrice() * roofPlank2Amount;
         
-        Materials finalRoofPlank2 = new Materials("Tag planke(20x10x2)", roofPlank2.getLength(), roofPlank2Amount, "stk", roofPlank2.getDescription(), Math.ceil(roofPlank2Price));
+        Materials finalRoofPlank2 = new Materials("Roof Plank(20x10x2)", roofPlank2.getLength(), roofPlank2Amount, "stk", roofPlank2.getDescription(), Math.ceil(roofPlank2Price));
         allMaterials.add(finalRoofPlank2);
         
-        Materials roofPlank5 = LogicFacade.getMaterialByName("Tag planke(20x10x5)");
+        Materials roofPlank5 = LogicFacade.getMaterialByName("Roof Plank(20x10x5)");
         double roofPlank5Price = roofPlank5.getPrice() * roofPlank5Amount;
         
-        Materials finalRoofPlank5 = new Materials("Tag planke(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
+        Materials finalRoofPlank5 = new Materials("Roof Plank(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
         allMaterials.add(finalRoofPlank5);
         }
 
@@ -150,10 +150,10 @@ public class CarportCalculator {
         roofArea = (((length*hypotenuse)*2)/10000);
         topScrews = Math.ceil(roofArea) * 4;
         
-        Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
+        Materials roof = LogicFacade.getMaterialByName("Trapezoidal plate");
         double roofPrice = roof.getPrice()*roofArea;
         
-        Materials finalRoof = new Materials("Trapez Plade", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
+        Materials finalRoof = new Materials("Trapezoidal plate", roof.getLength(), Math.ceil(roofArea), "stk", roof.getDescription(), Math.ceil(roofPrice));
         allMaterials.add(finalRoof);
         
         }
@@ -173,24 +173,24 @@ public class CarportCalculator {
                 skurPlank = (((height/20) *100*4) / 2) - door;
                 screws += (skurPlank/100) *4;
                 
-                Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
+                Materials skurPlanke = LogicFacade.getMaterialByName("Shed Plank(20x10x2)");
                 double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
                 
-                Materials finalSkurPlanke = new Materials("Skur planke(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), skurPlankePris);
+                Materials finalSkurPlanke = new Materials("Shed Plank(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), skurPlankePris);
                 allMaterials.add(finalSkurPlanke);
             } else {
                 skurPlank = ((height/20) *200*4) - door;
                 screws += (skurPlank/200) *4;
                 
-                Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
+                Materials skurPlanke = LogicFacade.getMaterialByName("Shed Plank(20x10x2)");
                 double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
                 
-                Materials finalSkurPlanke = new Materials("Skur planke(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), Math.ceil(skurPlankePris));
+                Materials finalSkurPlanke = new Materials("Shed Plank(20x10x2)", skurPlanke.getLength(), skurPlank/200, "stk", skurPlanke.getDescription(), Math.ceil(skurPlankePris));
                 allMaterials.add(finalSkurPlanke);
             }
-            Materials shedDoor = LogicFacade.getMaterialByName("Skur doer");
+            Materials shedDoor = LogicFacade.getMaterialByName("Shed door");
             
-            Materials finalShedDoor = new Materials("Skur doer", shedDoor.getLength(), 1, "stk", shedDoor.getDescription(), shedDoor.getPrice());
+            Materials finalShedDoor = new Materials("Shed door", shedDoor.getLength(), 1, "stk", shedDoor.getDescription(), shedDoor.getPrice());
             allMaterials.add(finalShedDoor);
             
             
