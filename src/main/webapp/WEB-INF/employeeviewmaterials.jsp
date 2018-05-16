@@ -34,8 +34,8 @@
                 </form>
             </div>
         </nav>
-        <div>
-             <table class="table table-dark">
+        <div class="container">
+             <table class="table table-bordered">
                 <%=RenderMaterials.empMaterialeToHtml()%>
             </table>
         </div>

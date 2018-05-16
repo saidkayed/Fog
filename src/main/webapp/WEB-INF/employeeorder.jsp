@@ -55,7 +55,7 @@
 
             <%if (user != null) {%>
 
-            <div >
+            <div class="container">
                 <table class="table table-bordered">
                     <%=RenderOrder.empOrderToHtmlByEmail(user)%>
                 </table>
