@@ -26,7 +26,7 @@ public class tester {
      * @throws FunctionLayer.LoginSampleException
      */
     public static void main(String[] args) throws LoginSampleException {
-<<<<<<< HEAD
+
 
         
         Materials planke = LogicFacade.getMaterialByName("Planke(10cm*20cm) (meter pris)");
@@ -34,11 +34,9 @@ public class tester {
         System.out.println(planke.getPrice());        
         
        
-=======
         Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
                 System.out.println(skurPlanke.getPrice());
-            
->>>>>>> 601390a46030f0f477a94b0e5499af4730667eed
+
     }
     
             
