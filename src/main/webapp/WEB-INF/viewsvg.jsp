@@ -27,7 +27,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <title>viewsvg</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,9 +41,9 @@
             </div>
         </nav>
     <center>
-        <br><br><br>
+        <br>
         <svg
-            width="1000" height="1000">
+            width="550" height="550">
         <rect x="20" y="20" height=<%=length%> width=<%=width%>
               style="stroke:#000000; fill: lightgray"/>
         <defs>
@@ -96,21 +96,20 @@
         <text writing-mode="tb" x="10" y=<%=length / 2%> font-family="sans-serif" font-size="20px" fill="red"><%=length%> cm</text>
         <text x=<%=width / 2%> y=<%=length / 5 + 20%> font-family="sans-serif" font-size="20px" fill="blue"><%=square%> m2</text> 
 
-        <%if(shed != null){
-            if(shed.equals("withshed1x1")){%>
-            <rect x=<%=width - 80%> y=<%=length - 80%> height="100" width="100"
-                style="stroke:#000000; fill: grey"/>
-            <text x=<%=width - 75%> y=<%=length - 50%> font-family="sans-serif" font-size="20px" fill="blue">1mx1m</text>
-            <text x=<%=width - 75%> y=<%=length - 30%> font-family="sans-serif" font-size="20px" fill="blue">shed</text>
-                <%}
-            if(shed.equals("withshed2x2")){%>
-            <rect x=<%=width - 180%> y=<%=length - 180%> height="200" width="200"
-                style="stroke:#000000; fill: grey"/>
-            <text x=<%=width - 120%> y=<%=length - 120%> font-family="sans-serif" font-size="20px" fill="blue">2mx2m Shed</text>
-                <%}
-        }%>
+        <%if (shed != null) {
+                if (shed.equals("withshed1x1")) {%>
+        <rect x=<%=width - 80%> y=<%=length - 80%> height="100" width="100"
+              style="stroke:#000000; fill: grey"/>
+        <text x=<%=width - 75%> y=<%=length - 50%> font-family="sans-serif" font-size="20px" fill="blue">1mx1m</text>
+        <text x=<%=width - 75%> y=<%=length - 30%> font-family="sans-serif" font-size="20px" fill="blue">shed</text>
+        <%}
+                    if (shed.equals("withshed2x2")) {%>
+        <rect x=<%=width - 180%> y=<%=length - 180%> height="200" width="200"
+              style="stroke:#000000; fill: grey"/>
+        <text x=<%=width - 120%> y=<%=length - 120%> font-family="sans-serif" font-size="20px" fill="blue">2mx2m Shed</text>
+        <%}
+                    }%>
         </svg>
-        <br><br><br>
         <form>
             <form name="makeorder" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="makeorder">
@@ -119,10 +118,12 @@
                 <input type="hidden" name="height" value=<%=height%>>
                 <input type="hidden" name="roof" value=<%=roof%>>
                 <input type="hidden" name="shed" value=<%=shed%>>
-                
-
-
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">
+            </form>
+                <br>
+            <form action="FrontController" method="Post">
+                <input type="hidden" name="command" value="backtocustomerchoice">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Back</button>
             </form>
     </center>
 </body>

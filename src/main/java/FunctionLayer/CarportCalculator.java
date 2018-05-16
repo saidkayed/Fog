@@ -24,13 +24,14 @@ public class CarportCalculator {
         int height = order.getHeight();
         String stringRoof = order.getRoof();
         String stringShed = order.getShed();
+        int screws;
+        double topScrews;
         
         //vores planker er 20*10*2 og 20*10*5
-        int spær5Amount;
         
-
         //planker til carport omkreds(width og length kommer aldrig under 2)
         int plank5Amount = 4;
+        screws = 16;
         
         Materials planke5 = LogicFacade.getMaterialByName("Planke(20x10x5)");
         double plankePris = planke5.getPrice()*plank5Amount;
@@ -39,8 +40,9 @@ public class CarportCalculator {
         allMaterials.add(finalPlanke);
         
         
-        //spær
-        spær5Amount = spærCalculator(length);
+        //spær, bruges kun 5 meters spærplanker
+        int spær5Amount = spærCalculator(length);
+        screws += spær5Amount * 2;
         
         Materials spær = LogicFacade.getMaterialByName("Spaer(20x10x5)");
         double spærPris = spær.getPrice()*spær5Amount;
@@ -49,22 +51,27 @@ public class CarportCalculator {
         allMaterials.add(finalSpær);
         
         
-        //stolper
-        double stolpeHeight = stolpeHeightCalculator(height);
+        //stolper, graves 80-90cm ned hvis højden er under 1,8m. 1m hvis over 1,8m
+        double stolpeHeight = stolpeHeightCalculator(height) / 100.0;
+        String stringStolpeHeight = String.valueOf(stolpeHeight);
         int stolpeAmount = stolpeCalculator(length);
+        screws += stolpeAmount *4;
         
         Materials stolpe = LogicFacade.getMaterialByName("Stolpe");
         double stolpePris = stolpe.getPrice()*stolpeAmount;
         
-        Materials finalStolpe = new Materials("Stolpe", stolpe.getLength(), stolpeAmount, "stk", stolpe.getDescription(), stolpePris);
+        Materials finalStolpe = new Materials("Stolpe", stringStolpeHeight + " meter", stolpeAmount, "stk", stolpe.getDescription(), stolpePris);
         allMaterials.add(finalStolpe);
         
         
-        //roof
+        //roof, skældnes mellem fladt og rejsning. Hvis tag har rejsning udregnes planker til støtte samt tagareal
+        //Planker af 2 meter bruges til højde support, planker af 5 meter bruges til støtte langs tag
+        //Højde support og tag support ud fra hvert spær
         double roofArea;
         if (stringRoof.equals("fladt")){
         //roof fladt
         roofArea = ((length*width)/10000);
+        topScrews = Math.ceil(roofArea) * 4;
         
         Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
         double roofPrice = roof.getPrice()*roofArea;
@@ -73,15 +80,49 @@ public class CarportCalculator {
         allMaterials.add(finalRoof);
         
         } else {   
-        //planker til tag med rejsning
-        double hypotenuse = (width/2) / Math.cos(20);
-        double højdeKatete = (width/2) * Math.tan(20);
+        //planker til tag med rejsning,
+        double angleToRaidans = Math.toRadians(20);
         
-        double roofPlank2Amount = højdeKatete * spær5Amount;
-        double roofPlank5Amount = roofPlank2Amount *2;
+        double hypotenuse = (width/2) / Math.cos(angleToRaidans);
+        double højdeKatete = (width/2) * Math.tan(angleToRaidans);
+        
+        double roofPlank5Amount;
+        double roofPlank2Amount;
+        
+        if(højdeKatete > 200){
+            roofPlank5Amount = spær5Amount;
+            roofPlank5Amount += roofPlank5Amount*2;
+            screws += roofPlank5Amount * 4;
+            
+            
+        Materials roofPlank5 = LogicFacade.getMaterialByName("Tag planke(20x10x5)");
+        double roofPlank5Price = roofPlank5.getPrice() * roofPlank5Amount;
+        
+        Materials finalRoofPlank5 = new Materials("Tag planke(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
+        allMaterials.add(finalRoofPlank5);
+        
+        } else {
+            
+            roofPlank2Amount = spær5Amount;
+            roofPlank5Amount = roofPlank2Amount*2;
+            screws += (roofPlank5Amount *4) + (roofPlank2Amount * 4);
+            
+        Materials roofPlank2 = LogicFacade.getMaterialByName("Tag planke(20x10x2)");
+        double roofPlank2Price = roofPlank2.getPrice() * roofPlank2Amount;
+        
+        Materials finalRoofPlank2 = new Materials("Tag planke(20x10x2)", roofPlank2.getLength(), roofPlank2Amount, "stk", roofPlank2.getDescription(), Math.ceil(roofPlank2Price));
+        allMaterials.add(finalRoofPlank2);
+        
+        Materials roofPlank5 = LogicFacade.getMaterialByName("Tag planke(20x10x5)");
+        double roofPlank5Price = roofPlank5.getPrice() * roofPlank5Amount;
+        
+        Materials finalRoofPlank5 = new Materials("Tag planke(20x10x5)", roofPlank5.getLength(), roofPlank5Amount, "stk", roofPlank5.getDescription(), Math.ceil(roofPlank5Price));
+        allMaterials.add(finalRoofPlank5);
+        }
 
         //trapezplade til tag med rejsning
         roofArea = (((length*hypotenuse)*2)/10000);
+        topScrews = Math.ceil(roofArea) * 4;
         
         Materials roof = LogicFacade.getMaterialByName("Trapez Plade");
         double roofPrice = roof.getPrice()*roofArea;
@@ -91,13 +132,15 @@ public class CarportCalculator {
         
         }
         
-        //shed
-        //shed door = 210 høj 70 bred
+        //Skur planker udregnes og døren trækkes fra. Bruges planker af 2 meters længde.
+        //skur dør = 210 høj 70 bred
+        
         if(!stringShed.equals("withoutshed")){
             int skurPlank;
             int door = (210/20) * 70;
             if(stringShed.equals("withshed1x1")){
                 skurPlank = (((height/20) *100*4) / 2) - door;
+                screws += (skurPlank/100) *4;
                 
                 Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
                 double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
@@ -106,6 +149,7 @@ public class CarportCalculator {
                 allMaterials.add(finalSkurPlanke);
             } else {
                 skurPlank = ((height/20) *200*4) - door;
+                screws += (skurPlank/200) *4;
                 
                 Materials skurPlanke = LogicFacade.getMaterialByName("Skur planke(20x10x2)");
                 double skurPlankePris = skurPlanke.getPrice() * (skurPlank/200);
@@ -114,13 +158,24 @@ public class CarportCalculator {
                 allMaterials.add(finalSkurPlanke);
             }
             Materials shedDoor = LogicFacade.getMaterialByName("Skur doer");
-            double shedDoorPrice = shedDoor.getPrice();
             
             Materials finalShedDoor = new Materials("Skur doer", shedDoor.getLength(), 1, "stk", shedDoor.getDescription(), shedDoor.getPrice());
             allMaterials.add(finalShedDoor);
             
             
         }
+        
+        Materials sscrews = LogicFacade.getMaterialByName("Screws");
+        double screwPrice = sscrews.getPrice() * screws;
+        
+        Materials finalScrews = new Materials("Screws", sscrews.getLength(), screws, "stk", sscrews.getDescription(), screwPrice);
+        allMaterials.add(finalScrews);
+        
+        Materials ttopScrews = LogicFacade.getMaterialByName("Top Screws");
+        double topScrewPrice = ttopScrews.getPrice() * topScrews;
+        
+        Materials finalTopScrews = new Materials("Top Screws", ttopScrews.getLength(), topScrews, "stk", ttopScrews.getDescription(), topScrewPrice);
+        allMaterials.add(finalTopScrews);
 
         return allMaterials;
     }

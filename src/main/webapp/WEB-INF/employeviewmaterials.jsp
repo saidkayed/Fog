@@ -34,8 +34,8 @@
                 </form>
             </div>
         </nav>
-        <div>
-            <table>
+        <div class="container">
+            <table class="table table-bordered">
                 <%=Materials.empMaterialeToHtml()%>
             </table>
         </div>

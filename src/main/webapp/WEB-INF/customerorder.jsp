@@ -34,9 +34,9 @@
             </div>
         </nav>
     <center>
-        <div>
+        <div class="container">
             <h1>All orders made by <%=user.getEmail()%> </h1><br>
-            <table>
+            <table class="table table-bordered">
                 <%=Order.userOrderToHtml(user)%>
             </table>
         </div>
