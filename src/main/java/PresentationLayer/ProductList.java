@@ -23,9 +23,9 @@ public class ProductList extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        
+        CarportCalculator car = new CarportCalculator();
         int orderid = Integer.parseInt(request.getParameter("orderid"));
-        ArrayList<Materials> materials = CarportCalculator.calculator(orderid);
+        ArrayList<Materials> materials = car.calculator(orderid);
         
         request.setAttribute("materials", materials);
         return "/WEB-INF/" + "productlist";

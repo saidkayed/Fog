@@ -6,24 +6,21 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Sercan
+ * @author SA
  */
-public class AddMaterial extends Command {
+public class BackToCustomerChoice extends Command {
 
-    public AddMaterial() {
+    public BackToCustomerChoice() {
     }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
-        return "/WEB-INF/" + "addmaterial";
+        return "/WEB-INF/" + "customerchoice";
     }
 
 }

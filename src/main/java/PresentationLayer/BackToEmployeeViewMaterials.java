@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author SA
+ * @author Sercan
  */
-public class backtoCustomerChoice extends Command {
+public class BackToEmployeeViewMaterials extends Command {
 
-    public backtoCustomerChoice() {
+    public BackToEmployeeViewMaterials() {
     }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        return "/WEB-INF/" + "customerchoice";
+        
+        return "/WEB-INF/" + "employeeviewmaterials";
     }
-
+    
 }

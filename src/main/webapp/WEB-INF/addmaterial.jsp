@@ -76,7 +76,7 @@
                 </div>
             </div>
             <br>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Materiale</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Material</button>
         </form>
 
         <script>

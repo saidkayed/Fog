@@ -11,25 +11,34 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
+        
+        //Login/Registration
         commands.put("login", new Login());
         commands.put("register", new Register());
         commands.put("logout", new Logout());
+        commands.put("search", new EmpSearch());
+        
+        //Order
         commands.put("makeorder", new MakeOrder());
         commands.put("orderpage", new OrderPage());
         commands.put("viewsvg", new ViewSvg());
-        commands.put("viewordersemp", new ViewOrdersEmp());
-        commands.put("vieworderscustomer", new ViewOrdersCustomer());
         commands.put("sendorder", new SendOrder());
         commands.put("deleteorder", new DeleteOrder());
-        commands.put("deletematerial", new DeleteMaterial());
-        commands.put("home", new Home());
-        commands.put("backtocustomerchoice", new backtoCustomerChoice());
-        commands.put("search", new EmpSearch());
+        commands.put("viewordersemp", new ViewOrdersEmp());
+        commands.put("vieworderscustomer", new ViewOrdersCustomer());
+        
+        //Material
         commands.put("viewmaterials", new ViewMaterials());
-        commands.put("backtoemployeviewmaterials", new backtoemployeviewmaterials());
-        commands.put("addmaterial", new AddMaterial());
+        commands.put("deletematerial", new DeleteMaterial());
+        commands.put("addmaterialnavigation", new AddMaterialNavigation());
         commands.put("addmaterials", new AddMaterials());
         commands.put("productlist", new ProductList());
+          
+        //Navigation
+        commands.put("home", new Home());
+        commands.put("backtocustomerchoice", new BackToCustomerChoice());
+        commands.put("backtoemployeviewmaterials", new BackToEmployeeViewMaterials());
+        
 
     }
 

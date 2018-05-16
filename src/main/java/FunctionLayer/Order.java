@@ -119,13 +119,14 @@ public class Order {
 
         String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrders();
-
+        
             if (!order.isEmpty()) {
 
                 output = "<tbody>"
                         + "<tr>"
                         + "<th>Userid</th>"
                         + "<th>Orderid</th>"
+                        + "<th>Phone</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
                         + "<th>Height</th>"
@@ -135,10 +136,12 @@ public class Order {
                         + "</tr>";
                 
                 for (Order orders : order) {
+                    int phone = LogicFacade.getPhoneByUserId(orders.getId());
                 output += "<tr>"
                 
                         + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
+                        + "<td>" + phone + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"
@@ -173,10 +176,9 @@ public class Order {
         return output;
     }
     
-     public static String empOrderToHtmlByEmail(String email) throws LoginSampleException {
+     public static String empOrderToHtmlByEmail(User user) throws LoginSampleException {
 
         String output = "<h2> No orders found in database</h2>";
-        User user = LogicFacade.getUserByEmail(email);
         ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
 
             if (!order.isEmpty()) {
@@ -185,6 +187,7 @@ public class Order {
                         + "<tr>"
                         + "<th>Userid</th>"
                         + "<th>Orderid</th>"
+                        + "<th>Phone</th>"
                         + "<th>Length</th>"
                         + "<th>Width</th>"
                         + "<th>Height</th>"
@@ -197,6 +200,7 @@ public class Order {
                 output += "<tr>"
                         + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
+                        + "<td>" + user.getPhone() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"
@@ -241,6 +245,7 @@ public class Order {
                     + "<tr>"
                     + "<th>Userid</th>"
                     + "<th>Orderid</th>"
+                    + "<th>Phone</th>"
                     + "<th>Length</th>"
                     + "<th>Width</th>"
                     + "<th>Height</th>"
@@ -253,6 +258,7 @@ public class Order {
                 output += "<tr>"
                         + "<td>" + orders.getId() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
+                        + "<td>" + user.getPhone() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
                         + "<td>" + orders.getWidth() + "</td>"
                         + "<td>" + orders.getHeight() + "</td>"

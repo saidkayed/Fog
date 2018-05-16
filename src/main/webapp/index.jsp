@@ -41,6 +41,9 @@
                         Email:<br>
                         <input class="form-control mr-sm-2" type="text" name="email" placeholder="email">
                         <br>
+                        Phone:
+                        <input class="form-control mr-sm-2" type="number" name="phone" placeholder="12345678">
+                        <br>
                         Password:<br>
                         <input class="form-control mr-sm-2" type="password" name="password1" placeholder="password">
                         <br>

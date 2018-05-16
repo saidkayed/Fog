@@ -24,7 +24,7 @@ public class DeleteMaterial extends Command {
         int mid = Integer.parseInt(request.getParameter("materialid"));
         LogicFacade.deleteMaterialById(mid);
         
-        return "/WEB-INF/" + "employeviewmaterials"; 
+        return "/WEB-INF/" + "employeeviewmaterials"; 
     }
     
 }

@@ -58,7 +58,7 @@
             <div class="container">
             <table class="table table-bordered">
 
-                <%=Order.empOrderToHtmlByEmail(user.getEmail())%>
+                <%=Order.empOrderToHtmlByEmail(user)%>
             </table>
             <%} else {%>
             <table class="table table-bordered">
