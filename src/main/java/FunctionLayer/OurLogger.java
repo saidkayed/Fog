@@ -20,9 +20,9 @@ public class OurLogger {
    private final static Logger logger = Logger.getLogger(OurLogger.class.getName());
     private static FileHandler fh = null;
 
-    public static void init() throws IOException {
+    public static void init() throws IOException {        
         try {
-            fh = new FileHandler("/Users/tobbe/Desktop/log.txt", true); // sidste parameter appende til eksisterende. 
+            fh = new FileHandler("/Users/sidad/Desktop/log.txt", true); // sidste parameter appende til eksisterende. 
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }
