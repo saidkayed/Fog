@@ -1,6 +1,7 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
+import java.io.IOException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
+        
         
         //Login/Registration
         commands.put("login", new Login());
@@ -51,6 +53,6 @@ abstract class Command {
     }
 
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
-            throws LoginSampleException;
+            throws CarportException, IOException;
 
 }

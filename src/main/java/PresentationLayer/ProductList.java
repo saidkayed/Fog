@@ -6,7 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportCalculator;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.Materials;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ public class ProductList extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         CarportCalculator car = new CarportCalculator();
         int orderid = Integer.parseInt(request.getParameter("orderid"));
         ArrayList<Materials> materials = car.calculator(orderid);

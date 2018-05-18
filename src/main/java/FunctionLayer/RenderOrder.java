@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Sercan
  */
 public class RenderOrder {
-    public static String empOrderToHtml() throws LoginSampleException {
+    public static String empOrderToHtml() throws CarportException {
 
         String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrders();
@@ -71,7 +71,7 @@ public class RenderOrder {
         return output;
     }
 
-    public static String empOrderToHtmlByEmail(User user) throws LoginSampleException {
+    public static String empOrderToHtmlByEmail(User user) throws CarportException {
 
         String output = "<h2> No orders found in database</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
@@ -127,7 +127,7 @@ public class RenderOrder {
         return output;
     }
 
-    public static String userOrderToHtml(User user) throws LoginSampleException {
+    public static String userOrderToHtml(User user) throws CarportException {
         String output = "<h2> You have not made any orders</h2>";
         ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
 

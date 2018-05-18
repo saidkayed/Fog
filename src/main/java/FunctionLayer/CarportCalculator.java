@@ -18,7 +18,7 @@ public class CarportCalculator {
         double topScrews;
         
         
-    public ArrayList<Materials> calculator(int orderid) throws LoginSampleException{
+    public ArrayList<Materials> calculator(int orderid) throws CarportException{
        
         Order order = LogicFacade.getOrderById(orderid);
         
@@ -38,7 +38,7 @@ public class CarportCalculator {
         return allMaterials;
     }
         
-        private void plankeCalculator() throws LoginSampleException{
+        private void plankeCalculator() throws CarportException{
         //planker til carport omkreds(width og length kommer aldrig under 2)
         int plank5Amount = 4;
         screws = 16;
@@ -54,7 +54,7 @@ public class CarportCalculator {
         
         
         
-        private int spærCalculator(int length) throws LoginSampleException{
+        private int spærCalculator(int length) throws CarportException{
         //spær, bruges kun 5 meters spærplanker
         int spær5Amount = spærAmountCalculator(length);
         screws += spær5Amount * 2;
@@ -71,7 +71,7 @@ public class CarportCalculator {
         
         
         
-        private void stolpeCalculator(int length, int height) throws LoginSampleException{
+        private void stolpeCalculator(int length, int height) throws CarportException{
         //stolper, graves 80-90cm ned hvis højden er under 1,8m. 1m hvis over 1,8m
         double stolpeHeight = stolpeHeightCalculator(height) / 100.0;
         String stringStolpeHeight = String.valueOf(stolpeHeight);
@@ -89,7 +89,7 @@ public class CarportCalculator {
         
         
         
-        private void roofCalculator(int length, int height, int width, String stringRoof, int spær5Amount) throws LoginSampleException{
+        private void roofCalculator(int length, int height, int width, String stringRoof, int spær5Amount) throws CarportException{
         //roof, skældnes mellem fladt og rejsning. Hvis tag har rejsning udregnes planker til støtte samt tagareal
         //Planker af 2 meter bruges til højde support, planker af 5 meter bruges til støtte langs tag
         //Højde support og tag support ud fra hvert spær
@@ -162,7 +162,7 @@ public class CarportCalculator {
         
         
         
-        private void shedCalculator(String stringShed, int height) throws LoginSampleException{
+        private void shedCalculator(String stringShed, int height) throws CarportException{
         //Skur planker udregnes og døren trækkes fra. Bruges planker af 2 meters længde.
         //skur dør = 210 høj 70 bred
         
@@ -211,7 +211,7 @@ public class CarportCalculator {
         
     
     
-    private static int spærAmountCalculator(int length) throws LoginSampleException{
+    private static int spærAmountCalculator(int length) throws CarportException{
         int spærAmount;
         
         if(length%100 == 0){
@@ -221,7 +221,7 @@ public class CarportCalculator {
         } return spærAmount;
     }
     
-    private static int stolpeAmountCalculator(int length) throws LoginSampleException{
+    private static int stolpeAmountCalculator(int length) throws CarportException{
         int stolpeAmount;
         
         
@@ -231,7 +231,7 @@ public class CarportCalculator {
             stolpeAmount = (length/200 + 1 )*2;
         } return stolpeAmount;
     }
-    private static int stolpeHeightCalculator(int height) throws LoginSampleException{
+    private static int stolpeHeightCalculator(int height) throws CarportException{
         int stolpeHeight;
         if (height-20 < 180){
             stolpeHeight = height-20+80;

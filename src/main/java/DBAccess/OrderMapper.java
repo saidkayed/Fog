@@ -5,7 +5,7 @@
  */
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static void createOrder(User user, int width, int length, int height, String roof, String shed, String date, String status) throws LoginSampleException {
+    public static void createOrder(User user, int width, int length, int height, String roof, String shed, String date, String status) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `order` (id, width, length, height, roof, shed, date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -35,11 +35,11 @@ public class OrderMapper {
             ps.setString(8, status);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
     }
 
-    public static ArrayList<Order> getAllOrders() throws LoginSampleException {
+    public static ArrayList<Order> getAllOrders() throws CarportException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -64,12 +64,12 @@ public class OrderMapper {
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
         return allOrders;
     }
 
-    public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {
+    public static ArrayList<Order> getAllOrdersByUser(User user) throws CarportException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -95,12 +95,12 @@ public class OrderMapper {
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
         return allOrders;
     }
     
-    public static Order getOrderById(int orderid) throws LoginSampleException{
+    public static Order getOrderById(int orderid) throws CarportException{
         Order order = null;
         try{
             Connection con = Connector.connection();
@@ -123,12 +123,12 @@ public class OrderMapper {
                 order = new Order(orderid, id, width, length, height, roof, shed, date, status);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
     }
         return order;
     }
 
-    public static void sendOrderById(int orderid) throws LoginSampleException {
+    public static void sendOrderById(int orderid) throws CarportException {
         Order output = null;
 
         try {
@@ -140,11 +140,11 @@ public class OrderMapper {
             st.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
     }
 
-    public static void deleteOrderById(int orderid) throws LoginSampleException {
+    public static void deleteOrderById(int orderid) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "Delete from `order` where orderid = ?";
@@ -152,7 +152,7 @@ public class OrderMapper {
             st.setInt(1, orderid);
             st.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
 
     }

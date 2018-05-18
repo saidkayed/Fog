@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class RenderMaterials {
 
-    public static String empMaterialeToHtml() throws LoginSampleException {
-
+    public static String empMaterialeToHtml() throws CarportException {
+        
         String output = "<h2> No materials found in database</h2>";
         ArrayList<Materials> mat = LogicFacade.getAllMaterials();
 
@@ -46,7 +46,7 @@ public class RenderMaterials {
         return output;
     }
 
-    public static String materialToProductListHtml(ArrayList<Materials> materials) throws LoginSampleException {
+    public static String materialToProductListHtml(ArrayList<Materials> materials) throws CarportException {
         //public Materials(String name, double length, double amount, String unit, String description, double dprice){
 
         String output = "<h2> Something went wrong </h2>";
@@ -78,7 +78,7 @@ public class RenderMaterials {
 
     }
 
-    public static int materialTotalPrice(ArrayList<Materials> materials) throws LoginSampleException {
+    public static int materialTotalPrice(ArrayList<Materials> materials) throws CarportException {
         int totalprice = 0;
 
         if (!materials.isEmpty()) {

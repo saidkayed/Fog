@@ -8,7 +8,7 @@ package DBAccess;
 import FunctionLayer.CarportCalculator;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.Materials;
 import FunctionLayer.Order;
 import FunctionLayer.User;
@@ -23,9 +23,9 @@ public class tester {
     
     /**
      * @param args the command line arguments
-     * @throws FunctionLayer.LoginSampleException
+     * @throws FunctionLayer.CarportException
      */
-    public static void main(String[] args) throws LoginSampleException {
+    public static void main(String[] args) throws CarportException {
 
 
         

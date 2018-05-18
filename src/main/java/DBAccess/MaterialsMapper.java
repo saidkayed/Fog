@@ -5,7 +5,7 @@
  */
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.Materials;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class MaterialsMapper {
 
-    public static void addMaterial(Materials mat) throws LoginSampleException {
+    public static void addMaterial(Materials mat) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `materials` (name, price, length, description) VALUES ( ?, ?, ? ,?)";
@@ -35,12 +35,12 @@ public class MaterialsMapper {
             int id = ids.getInt(1);
             mat.setId(id);
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
 
         }
     }
 
-    public static ArrayList<Materials> getAllMaterials() throws LoginSampleException {
+    public static ArrayList<Materials> getAllMaterials() throws CarportException {
         ArrayList<Materials> allMaterials = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -63,12 +63,12 @@ public class MaterialsMapper {
                 allMaterials.add(mat);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
         return allMaterials;
     }
 
-    public static void deleteMaterialById(int materialid) throws LoginSampleException {
+    public static void deleteMaterialById(int materialid) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "Delete from `materials` where materialid = ?";
@@ -76,7 +76,7 @@ public class MaterialsMapper {
             st.setInt(1, materialid);
             st.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
 
     }
@@ -85,7 +85,7 @@ public class MaterialsMapper {
 
     }
 
-    public static Materials getMaterialByName(String name) throws LoginSampleException {
+    public static Materials getMaterialByName(String name) throws CarportException {
         Materials mat = null;
         try {
             Connection con = Connector.connection();
@@ -104,7 +104,7 @@ public class MaterialsMapper {
                 mat.setId(id);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
 
         }
         return mat;
