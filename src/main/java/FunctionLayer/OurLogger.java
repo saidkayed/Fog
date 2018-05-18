@@ -6,6 +6,7 @@
 package FunctionLayer;
 
 import java.io.IOException;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import java.util.logging.SimpleFormatter;
  */
 public class OurLogger {
 
-   private final static Logger logger = Logger.getLogger(OurLogger.class.getName());
+    private static Logger logger;
     private static FileHandler fh = null;
 
     public static void init() throws IOException {
@@ -26,10 +27,11 @@ public class OurLogger {
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }
-        Logger l = Logger.getLogger("");
+        Logger l = Logger.getLogger(OurLogger.class.getName());
         fh.setFormatter(new SimpleFormatter());
         l.addHandler(fh);
         l.setLevel(Level.CONFIG);
+
     }
     
     }

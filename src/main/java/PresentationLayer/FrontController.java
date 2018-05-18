@@ -36,11 +36,12 @@ public class FrontController extends HttpServlet {
      @throws IOException if an I/O error occurs
      */
     
-    private final static Logger logger = Logger.getLogger(OurLogger.class.getName());
+    private  static Logger logger = Logger.getLogger(OurLogger.class.getName());
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        OurLogger.init();
-                
+        
+            //OurLogger.init();
+        
         try {
             Command action = Command.from( request );
             String view = action.execute( request, response );
