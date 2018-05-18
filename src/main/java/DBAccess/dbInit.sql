@@ -70,3 +70,26 @@ INSERT INTO `materials` VALUES
 ('8', 'Shed door', '1000', '210cm x 70cm', 'Shed door for the shed'),
 ('9', 'Screws', '1', '5cm', 'Screws for the planks'),
 ('10', 'Top Screws', '1', '5cm', 'Screws for roof plates');
+
+
+
+//Test db
+
+
+Drop table if exists `fogdbtest`.`user`;
+
+CREATE TABLE `fogdbtest`.`user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(90) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `phone` INT(11) NOT NULL,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'customer',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = latin1;
+
+INSERT INTO `user` VALUES 
+(1,'123','123',12341234,'customer'),
+(3,'456','456',23452345,'employee');
