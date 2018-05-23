@@ -99,6 +99,17 @@
                             </form>
                         </td>
                     </table>
+                    <table>
+                        <td>
+                            <h4>Test System</h4>
+                            <form name="systemtest" action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="systemtest">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Test System</button>
+                            </form>
+                            
+                            
+                        </td>
+                    </table>
                 </div>
             </div>
             <% String error = (String) request.getAttribute("error");

@@ -81,7 +81,7 @@
                         <br>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Plan</button>
                     </form>
-                    <br>            
+                    <br>   
                     <form action="FrontController" method="Post">
                         <input type="hidden" name="command" value="home">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Back</button>

@@ -28,7 +28,8 @@ public class tester {
      * @throws FunctionLayer.CarportException
      */
     public static void main(String[] args) throws CarportException, IOException {
-
+        User user = LogicFacade.login("SystemTester", "SystemTester");
+        System.out.println(user.getRole());
 
        
                 

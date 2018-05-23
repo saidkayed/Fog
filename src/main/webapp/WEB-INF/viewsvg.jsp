@@ -103,13 +103,19 @@
         <text x=<%=width - 75%> y=<%=length - 50%> font-family="sans-serif" font-size="20px" fill="blue">1mx1m</text>
         <text x=<%=width - 75%> y=<%=length - 30%> font-family="sans-serif" font-size="20px" fill="blue">shed</text>
         <%}
-                    if (shed.equals("withshed2x2")) {%>
+            if (shed.equals("withshed2x2")) {%>
         <rect x=<%=width - 180%> y=<%=length - 180%> height="200" width="200"
               style="stroke:#000000; fill: grey"/>
         <text x=<%=width - 120%> y=<%=length - 120%> font-family="sans-serif" font-size="20px" fill="blue">2mx2m Shed</text>
         <%}
-                    }%>
+            }%>
         </svg>
+        <%if (user.getRole().equals("tester")) {%>
+        <form name="backtoindex" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="backtoindex">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Login/Register to Use System Further">
+        </form>
+        <%} else {%>
         <form>
             <form name="makeorder" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="makeorder">
@@ -120,7 +126,8 @@
                 <input type="hidden" name="shed" value=<%=shed%>>
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Make Order">
             </form>
-                <br>
+            <%}%>
+            <br>
             <form action="FrontController" method="Post">
                 <input type="hidden" name="command" value="backtocustomerchoice">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Back</button>

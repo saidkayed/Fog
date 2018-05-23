@@ -19,6 +19,7 @@ abstract class Command {
         commands.put("register", new Register());
         commands.put("logout", new Logout());
         commands.put("search", new EmpSearch());
+        commands.put("systemtest", new SystemTest());
         
         //Order
         commands.put("makeorder", new MakeOrder());
@@ -40,6 +41,7 @@ abstract class Command {
         commands.put("backtocustomerchoice", new BackToCustomerChoice());
         commands.put("backtoemployeviewmaterials", new BackToEmployeeViewMaterials());
         commands.put("addmaterialnavigation", new AddMaterialNavigation());
+        commands.put("backtoindex", new BackToIndex());
    
 
     }

@@ -1,13 +1,15 @@
 CREATE SCHEMA IF NOT EXISTS `fog` DEFAULT CHARACTER SET latin1 ;
 USE `fog` ;
 
-Drop table if exists `order`;
-Drop table if exists `user`;
-Drop table if exists `materials`;
+SET foreign_key_checks = 0;
+Drop table if exists `fog`.`order`;
+Drop table if exists `fog`.`user`;
+Drop table if exists `fog`.`materials`;
+SET foreign_key_checks = 1;
 -- -----------------------------------------------------
 -- Table `fog`.`user`
 -- -----------------------------------------------------
-CREATE TABLE `fog`.`user` (
+CREATE TABLE IF NOT EXISTS `fog`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(90) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -21,13 +23,14 @@ DEFAULT CHARACTER SET = latin1;
 
 INSERT INTO `user` VALUES 
 (1,'123','123',12341234,'customer'),
-(3,'456','456',23452345,'employee');
+(2,'456','456',23452345,'employee'),
+(3, 'SystemTester', 'SystemTester', 12345678, 'tester');
 
 
 -- -----------------------------------------------------
 -- Table `fog`.`order`
 -- -----------------------------------------------------
-CREATE TABLE `fog`.`order` (
+CREATE TABLE IF NOT EXISTS `fog`.`order` (
   `orderid` INT(11) NOT NULL AUTO_INCREMENT,
   `id` INT(11) NOT NULL,
   `width` INT(11) NOT NULL,
@@ -70,8 +73,6 @@ INSERT INTO `materials` VALUES
 ('8', 'Shed door', '1000', '210cm x 70cm', 'Shed door for the shed'),
 ('9', 'Screws', '1', '5cm', 'Screws for the planks'),
 ('10', 'Top Screws', '1', '5cm', 'Screws for roof plates');
-
-
 
 //Test db
 
