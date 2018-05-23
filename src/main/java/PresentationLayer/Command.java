@@ -32,7 +32,6 @@ abstract class Command {
         //Material
         commands.put("viewmaterials", new ViewMaterials());
         commands.put("deletematerial", new DeleteMaterial());
-        commands.put("addmaterialnavigation", new AddMaterialNavigation());
         commands.put("addmaterials", new AddMaterials());
         commands.put("productlist", new ProductList());
           
@@ -40,7 +39,8 @@ abstract class Command {
         commands.put("home", new Home());
         commands.put("backtocustomerchoice", new BackToCustomerChoice());
         commands.put("backtoemployeviewmaterials", new BackToEmployeeViewMaterials());
-        
+        commands.put("addmaterialnavigation", new AddMaterialNavigation());
+   
 
     }
 
