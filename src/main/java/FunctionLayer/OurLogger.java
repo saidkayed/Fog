@@ -17,21 +17,19 @@ import java.util.logging.SimpleFormatter;
  */
 public class OurLogger {
 
-   private final static Logger logger = Logger.getLogger(OurLogger.class.getName());
+    private static Logger logger;
     private static FileHandler fh = null;
 
     public static void init() throws IOException {
         try {
-            fh = new FileHandler("/Users/tobbe/Desktop/log.txt", true); // sidste parameter appende til eksisterende. 
+            fh = new FileHandler("/Users/Sercan/Desktop/logger.txt", true); // sidste parameter appende til eksisterende. 
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }
-        Logger l = Logger.getLogger("");
+        Logger l = Logger.getLogger(OurLogger.class.getName());
         fh.setFormatter(new SimpleFormatter());
         l.addHandler(fh);
         l.setLevel(Level.CONFIG);
     }
-    
-    }
-    
 
+}

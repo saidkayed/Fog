@@ -35,61 +35,68 @@
         </nav>
 
     <center>
-        <form id="material" name="addmaterials" action="FrontController" method="POST"
-              data-fv-framework="bootstrap"
-              data-fv-icon-valid="glyphicon glyphicon-ok"
-              data-fv-icon-invalid="glyphicon glyphicon-remove"
-              data-fv-icon-validating="glyphicon glyphicon-refresh">
-            <input type="hidden" name="command" value="addmaterials">
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Material Name</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="name"
-                           required
-                           data-fv-notempty-message="The material name is required" />
-                </div>
-            </div>
+        <table>
+            <tr>
+                <td>
 
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Material Price</label>
-                <div class="col-xs-5">
-                    <input type="number" class="form-control" name="price"
-                           required
-                           data-fv-notempty-message="The material price is required" />
-                </div>
-                
-                <div class="form-group">
-                <label class="col-xs-3 control-label">Material Length</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="length"
-                           required
-                           data-fv-notempty-message="The material length is required" />
-                           
-                </div>
-                
-                <div class="form-group">
-                <label class="col-xs-3 control-label">Material Description</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="description"
-                           required
-                           data-fv-notempty-message="The material description is required" />
-                </div>
-            </div>
-            <br>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Material</button>
-        </form>
+                    <form id="material" name="addmaterials" action="FrontController" method="POST"
+                          data-fv-framework="bootstrap"
+                          data-fv-icon-valid="glyphicon glyphicon-ok"
+                          data-fv-icon-invalid="glyphicon glyphicon-remove"
+                          data-fv-icon-validating="glyphicon glyphicon-refresh">
+                        <input type="hidden" name="command" value="addmaterials">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Material Name</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control" name="name"
+                                       required
+                                       data-fv-notempty-message="The material name is required" />
+                            </div>
+                        </div>
 
-        <script>
-            $(document).ready(function () {
-                $('#material').formValidation();
-            });
-        </script>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Material Price</label>
+                            <div class="col-xs-5">
+                                <input type="number" class="form-control" name="price"
+                                       required
+                                       data-fv-notempty-message="The material price is required" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Material Length</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="length"
+                                           required
+                                           data-fv-notempty-message="The material length is required" />
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Material Description</label>
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" name="description"
+                                               required
+                                               data-fv-notempty-message="The material description is required" />
+                                    </div>
+                                </div>
+                                <br>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Material</button>
+                                </form>
+
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#material').formValidation();
+                                    });
+                                </script>
 
 
-        <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="backtoemployeviewmaterials">
-            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
-        </form>
-    </center>
-</body>
-</html>
+                                <form action="FrontController" method="Post">
+                                    <input type="hidden" name="command" value="backtoemployeviewmaterials">
+                                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Back">
+                                </form>
+                                </td>
+                                </tr>
+                                </table>
+                                </center>
+                                </body>
+                                </html>

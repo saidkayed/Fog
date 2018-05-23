@@ -6,6 +6,9 @@ import DBAccess.UserMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * The purpose of LogicFacade is to...
@@ -16,10 +19,10 @@ public class LogicFacade {
 
     //UserMapper
     public static User login(String email, String password) throws CarportException, IOException {
-        return UserMapper.login(email, password);
-    }
+    return UserMapper.login (email, password);
+}
 
-    public static User createUser(String email, String password, int phone) throws CarportException {
+public static User createUser(String email, String password, int phone) throws CarportException {
         User user = new User(email, password, phone, "customer");
         UserMapper.createUser(user);
         return user;
