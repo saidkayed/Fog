@@ -30,8 +30,7 @@ public class tester {
     public static void main(String[] args) throws CarportException, IOException {
 
 
-        Date date = new Date();
-        System.out.println(date.getTime());
+       
                 
         
         
