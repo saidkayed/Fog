@@ -40,13 +40,14 @@ public class FrontController extends HttpServlet {
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         
-            //OurLogger.init();
+
         
         try {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             request.getRequestDispatcher( view + ".jsp" ).forward( request, response );
         } catch ( CarportException ex ) {
+            OurLogger.init();
             logger.log(Level.SEVERE, null, ex);
             request.setAttribute( "error", ex.getMessage() );
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );

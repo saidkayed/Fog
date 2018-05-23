@@ -15,6 +15,7 @@ import FunctionLayer.User;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -29,10 +30,10 @@ public class tester {
     public static void main(String[] args) throws CarportException, IOException {
 
 
+        Date date = new Date();
+        System.out.println(date.getTime());
+                
         
-        User user = UserMapper.login("123", "123");
-        
-        System.out.println(user.getRole());
         
         
         
