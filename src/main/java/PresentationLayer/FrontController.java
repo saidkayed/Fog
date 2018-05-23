@@ -50,18 +50,12 @@ public class FrontController extends HttpServlet {
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
             
             throws ServletException, IOException {
-
        
-             OurLogger.init();
+       
+        OurLogger.init();
         
         
-         
-         
-
         
-            //OurLogger.init();
-        
-
         try {
             Command action = Command.from( request );
             String view = action.execute( request, response );
