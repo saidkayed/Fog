@@ -43,10 +43,6 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Materials</button>
         </form>
         <br>
-        <form name="lougout" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="logout">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-        </form>
         </head>
     </center>
 </body>
