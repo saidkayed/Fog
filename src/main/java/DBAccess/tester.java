@@ -22,7 +22,7 @@ import java.util.Date;
  * @author tobbe
  */
 public class tester {
-    
+
     /**
      * @param args the command line arguments
      * @throws FunctionLayer.CarportException
@@ -31,16 +31,6 @@ public class tester {
         User user = LogicFacade.login("SystemTester", "SystemTester");
         System.out.println(user.getRole());
 
-       
-                
-        
-        
-        
-        
-        
-
     }
-    
-            
-    
+
 }
