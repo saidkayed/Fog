@@ -19,7 +19,7 @@
         <title>Welcome page</title>
     </head>
     <body>
-        
+
         <div class="container">
             <img src="css-and-pictures/flogo.jpg"  width="1000" height="300">
             <div class="topleft"></div>
@@ -47,22 +47,42 @@
                 setTimeout(carousel, 1000); // Change image every 2 seconds
             }
         </script>
-        <center>
+    <center>
         <div class="row">
             <div class="column">
                 <table >
                     <td>
                         <h4> Login </h4>
-                        <form name="login" action="FrontController" method="POST">
+                        <form name="login" action="FrontController" method="POST"
+                              data-fv-framework="bootstrap"
+                              data-fv-icon-valid="glyphicon glyphicon-ok"
+                              data-fv-icon-invalid="glyphicon glyphicon-remove"
+                              data-fv-icon-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="command" value="login">
-                            Email:<br>
-                            <input class="form-control mr-sm-2" type="text" name="email" placeholder="email">
-                            <br>
-                            Password:<br>
-                            <input class="form-control mr-sm-2" type="password" name="password" placeholder="password">
-                            <br>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Email</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="email"
+                                           required
+                                           data-fv-notempty-message="Email is required" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Password</label>
+                                <div class="col-xs-5">
+                                    <input type="password" class="form-control" name="password"
+                                           required
+                                           data-fv-notempty-message="Password price is required" />
+                                </div>
+                                </div>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
+                        <script>
+                            $(document).ready(function () {
+                                $('#login').formValidation();
+                            });
+                        </script>
                     </td>
                 </table>
             </div>
@@ -87,32 +107,63 @@
 
                         <h4> Register </h4>
 
-                        <form name="register" action="FrontController" method="POST">
-                            <input type="hidden" name="command" value="register">
-                            Email:<br>
-                            <input class="form-control mr-sm-2" type="text" name="email" placeholder="email">
-                            <br>
-                            Phone:
-                            <input class="form-control mr-sm-2" type="number" name="phone" placeholder="12345678">
-                            <br>
-                            Password:<br>
-                            <input class="form-control mr-sm-2" type="password" name="password1" placeholder="password">
-                            <br>
-                            Retype Password:<br>
-                            <input class="form-control mr-sm-2" type="password" name="password2" placeholder="password">
-                            <br>
+                        <form name="register" action="FrontController" method="POST"
+
+                              <input type="hidden" name="command" value="register"                              data-fv-framework="bootstrap"
+                              data-fv-icon-valid="glyphicon glyphicon-ok"
+                              data-fv-icon-invalid="glyphicon glyphicon-remove"
+                              data-fv-icon-validating="glyphicon glyphicon-refresh">
+                            <input type="hidden" name="command" value="login">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Email</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="email"
+                                           required
+                                           data-fv-notempty-message="Email is required" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Phone</label>
+                                <div class="col-xs-5">
+                                    <input type="number" class="form-control" name="phone"
+                                           required
+                                           data-fv-notempty-message="Phone is required" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Password</label>
+                                <div class="col-xs-5">
+                                    <input type="password" class="form-control" name="password1"
+                                           required
+                                           data-fv-notempty-message="Password price is required" />
+                                </div>
+                                </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Password</label>
+                                <div class="col-xs-5">
+                                    <input type="password" class="form-control" name="password2"
+                                           required
+                                           data-fv-notempty-message="Password price is required" />
+                                </div>
+                                </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
+                        <script>
+                            $(document).ready(function () {
+                                $('#register').formValidation();
+                            });
+                        </script>
                     </td>
                 </table>
             </div>
         </div>
-        </center>
-        <% String error = (String) request.getAttribute("error");
-            if (error != null) {%>
-        <H2>Error!!</h2>
-        <p><%= error%>
-            <% }
-            %>
-</body>
+    </center>
+    <% String error = (String) request.getAttribute("error");
+        if (error != null) {%>
+    <H2>Error!!</h2>
+    <p><%= error%>
+        <% }
+        %>
+    </body>
 </html>
