@@ -20,9 +20,8 @@
     </head>
     <body>
     <center>
-        <div class="center">
         <img>
-        <br>
+        <br><br><br>
         <div class="w3-content w3-display-container">
             <img class="mySlides" src="css-and-pictures/download.jpg" style="width:50%">
             <img class="mySlides" src="css-and-pictures/download (2).jpg" style="width:50%">
@@ -75,6 +74,21 @@
                 </div>
                 <br>
                 <div class="column">
+                    
+                    <table>
+                        <td>
+                            <h4>Test System</h4>
+                            <form name="systemtest" action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="systemtest">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Test System</button>
+                            </form>
+                            
+                            
+                        </td>
+                    </table>
+                </div>
+                <br>
+                <div class="column">
                     <table>
 
                         <td>
@@ -99,17 +113,6 @@
                             </form>
                         </td>
                     </table>
-                    <table>
-                        <td>
-                            <h4>Test System</h4>
-                            <form name="systemtest" action="FrontController" method="POST">
-                                <input type="hidden" name="command" value="systemtest">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Test System</button>
-                            </form>
-                            
-                            
-                        </td>
-                    </table>
                 </div>
             </div>
             <% String error = (String) request.getAttribute("error");
@@ -118,7 +121,6 @@
             <p><%= error%>
                 <% }
                 %>
-            </div>
     </center>
 </body>
 </html>

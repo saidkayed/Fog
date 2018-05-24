@@ -11,7 +11,9 @@ img {
 
 .column {
     float: left;
-    width: 50%;
+    width: 30%;
+    padding: 1px;
+    height: 300px;
 }
 
 /* Clear floats after the columns */
