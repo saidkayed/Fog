@@ -73,15 +73,15 @@
                         <br>
                         Roof type:<br>
                         <select name="roof" class="form-control" data-style="btn-success">
-                            <option value="fladt" name="fladt">Carport med fladt</option>
-                            <option value="rejsning" name="rejsning">Carport med rejsning</option>
+                            <option value="fladt" name="fladt">Flat Roof</option>
+                            <option value="rejsning" name="rejsning">Triangular Roof</option>
                         </select>
                         <br>
                         Shed:<br>
                         <select name="shed" class="form-control" data-style="btn-success">
-                            <option value="withoutshed" name="withoutshed">Uden skur</option>
-                            <option value="withshed1x1" name="withshed1x1">Med skur 1m x 1m</option>
-                            <option value="withshed2x2" name="withshed2x2">Med skur 2m x 2m</option>
+                            <option value="withoutshed" name="withoutshed">Without Shed</option>
+                            <option value="withshed1x1" name="withshed1x1">With Shed 1m x 1m</option>
+                            <option value="withshed2x2" name="withshed2x2">With Shed 2m x 2m</option>
                         </select>
                         <br>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Plan</button>
