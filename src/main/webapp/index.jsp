@@ -19,32 +19,51 @@
         <title>Welcome page</title>
     </head>
     <body>
-
         <div class="container">
             <img src="css-and-pictures/flogo.jpg"  width="1000" height="300">
             <div class="topleft"></div>
         </div>
-        <div class="w3-content w3-section" style="max-width:500px">
-            <img class="mySlides" src="css-and-pictures/billed.jpg" style="width:70%">
-            <img class="mySlides" src="css-and-pictures/billed1.jpg" style="width:70%">
+        <div class="w3-content w3-display-container" style="max-width:400px">
+            <img class="mySlides" src="css-and-pictures/billed.jpg" style="width:100%">
+            <img class="mySlides" src="css-and-pictures/billed1.jpg" style="width:100%">
+            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+            </div>
         </div>
 
         <script>
-            var myIndex = 0;
-            carousel();
+            var slideIndex = 1;
+            showDivs(slideIndex);
 
-            function carousel() {
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+                showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
                 var i;
                 var x = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                if (n > x.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = x.length
+                }
                 for (i = 0; i < x.length; i++) {
                     x[i].style.display = "none";
                 }
-                myIndex++;
-                if (myIndex > x.length) {
-                    myIndex = 1
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" w3-white", "");
                 }
-                x[myIndex - 1].style.display = "block";
-                setTimeout(carousel, 1000); // Change image every 2 seconds
+                x[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " w3-white";
             }
         </script>
     <center>
@@ -75,8 +94,8 @@
                                            required
                                            data-fv-notempty-message="Password price is required" />
                                 </div>
-                                </div>
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+                            </div>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
                         <script>
                             $(document).ready(function () {
@@ -110,9 +129,9 @@
                         <form name="register" action="FrontController" method="POST"
 
                               <input type="hidden" name="command" value="register"                              data-fv-framework="bootstrap"
-                              data-fv-icon-valid="glyphicon glyphicon-ok"
-                              data-fv-icon-invalid="glyphicon glyphicon-remove"
-                              data-fv-icon-validating="glyphicon glyphicon-refresh">
+                               data-fv-icon-valid="glyphicon glyphicon-ok"
+                               data-fv-icon-invalid="glyphicon glyphicon-remove"
+                               data-fv-icon-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="command" value="login">
                             <div class="form-group">
                                 <label class="col-xs-3 control-label">Email</label>
@@ -125,7 +144,7 @@
                             <div class="form-group">
                                 <label class="col-xs-3 control-label">Phone</label>
                                 <div class="col-xs-5">
-                                    <input type="number" class="form-control" name="phone"
+                                    <input type="phone" class="form-control" name="phone"
                                            required
                                            data-fv-notempty-message="Phone is required" />
                                 </div>
@@ -138,7 +157,7 @@
                                            required
                                            data-fv-notempty-message="Password price is required" />
                                 </div>
-                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-xs-3 control-label">Password</label>
                                 <div class="col-xs-5">
@@ -146,7 +165,7 @@
                                            required
                                            data-fv-notempty-message="Password price is required" />
                                 </div>
-                                </div>
+                            </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
                         <script>
