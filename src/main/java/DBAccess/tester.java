@@ -28,9 +28,32 @@ public class tester {
      * @throws FunctionLayer.CarportException
      */
     public static void main(String[] args) throws CarportException, IOException {
-        User user = LogicFacade.login("SystemTester", "SystemTester");
-        System.out.println(user.getRole());
+/*
+        LogicFacade.createUser("ja", "hej", 123);
 
+        User user = LogicFacade.getUserByEmail("ja");
+
+        Order bla = new Order(1, 2, 3, 4, "rejsning", "withoutshed", "date", "pending");
+
+        LogicFacade.createOrder(user, bla);
+
+        Order order = LogicFacade.getOrderById(bla.getId());
+
+        System.out.println(order.getStatus());
+        
+        ArrayList<Materials> allMats = new ArrayList();
+        
+        CarportCalculator car = new CarportCalculator();
+        
+        allMats = car.calculator(order.getId());
+        
+        System.out.println(allMats.toString());
+
+*/
+
+ArrayList<Order> orders = LogicFacade.getAllOrders();
+
+        System.out.println(orders.toString());
     }
 
 }
