@@ -37,13 +37,8 @@ public static User createUser(String email, String password, int phone) throws C
     }
 
     //OrderMapper
-    public static void makeOrder(User user, int width, int length, int height, String roof, String shed) throws CarportException {
-        Date date = new Date();
-        String finalDate = date.toString();
-
-        String status = "pending";
-
-        OrderMapper.createOrder(user, width, length, height, roof, shed, finalDate, status);
+    public static void createOrder(User user, Order order) throws CarportException {
+        OrderMapper.createOrder(user, order);
     }
 
     public static ArrayList<Order> getAllOrders() throws CarportException {

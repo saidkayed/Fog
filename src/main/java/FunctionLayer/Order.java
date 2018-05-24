@@ -21,8 +21,8 @@ public class Order {
     private String date;
     private String status;
 
-    public Order(int orderid, int id, int width, int length, int height, String roof, String shed, String date, String status) {
-        this.orderid = orderid;
+    public Order(int id, int width, int length, int height, String roof, String shed, String date, String status) {
+        //this.orderid = orderid;
         this.id = id;
         this.width = width;
         this.length = length;

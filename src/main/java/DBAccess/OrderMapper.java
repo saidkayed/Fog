@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -20,20 +21,24 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static void createOrder(User user, int width, int length, int height, String roof, String shed, String date, String status) throws CarportException {
+    public static void createOrder(User user, Order order) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `order` (id, width, length, height, roof, shed, date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, user.getId());
-            ps.setInt(2, width);
-            ps.setInt(3, length);
-            ps.setInt(4, height);
-            ps.setString(5, roof);
-            ps.setString(6, shed);
-            ps.setString(7, date);
-            ps.setString(8, status);
+            ps.setInt(2, order.getWidth());
+            ps.setInt(3, order.getLength());
+            ps.setInt(4, order.getHeight());
+            ps.setString(5, order.getRoof());
+            ps.setString(6, order.getShed());
+            ps.setString(7, order.getDate());
+            ps.setString(8, order.getStatus());
             ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            order.setOrderid(id);
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
         }
@@ -58,9 +63,10 @@ public class OrderMapper {
                 String shed = rs.getString("shed");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
-
-                Order order = new Order(orderid, id, width, length, height, roof, shed, date, status);
-
+                
+                
+                Order order = new Order(id, width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -90,8 +96,9 @@ public class OrderMapper {
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, user.getId(), width, length, height, roof, shed, date, status);
-
+                Order order = new Order(user.getId(), width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
+                
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -120,8 +127,10 @@ public class OrderMapper {
                 String date = rs.getString("date");
                 String status = rs.getString("status");
                 
-                order = new Order(orderid, id, width, length, height, roof, shed, date, status);
+                order = new Order(id, width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
             }
+            
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
     }

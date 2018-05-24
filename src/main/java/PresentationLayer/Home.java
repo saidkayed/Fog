@@ -24,6 +24,9 @@ public class Home extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        if(user.getRole().equals("tester")){
+            return "index";
+        }
         return "/WEB-INF/" + user.getRole() + "page";
     }
 
