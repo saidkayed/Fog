@@ -6,10 +6,13 @@
 package dbTest;
 
 import DBAccess.Connector;
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import FunctionLayer.CarportCalculator;
 import FunctionLayer.CarportException;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.Materials;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -142,23 +145,22 @@ public class dbTest {
 
     @Test
     public void testCreateUser01() throws CarportException {
-        // Laver user og tester user
+        // Laver user og tester login
         User original = new User("bla", "hej", 123, "wizard");
         UserMapper.createUser(original);
         User retrieved = UserMapper.login("bla", "hej");
         assertEquals("wizard", retrieved.getRole());
     }
-
+   
     @Test
     public void testCarportCalculator() throws CarportException {
         //Tester Calculator
         CarportCalculator car = new CarportCalculator();
-        ArrayList<Materials> allMaterials = new ArrayList();
+        ArrayList<Materials> allMaterials;
         allMaterials = car.calculator(1);
         assertFalse(allMaterials.isEmpty());
         assertEquals(10, allMaterials.size());
         assertEquals(5, allMaterials.get(1).getAmount(), 0.0);
         assertEquals(16, allMaterials.get(5).getAmount(), 0.0);
-
     }
 }
