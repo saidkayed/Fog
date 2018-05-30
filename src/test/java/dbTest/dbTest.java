@@ -6,21 +6,16 @@
 package dbTest;
 
 import DBAccess.Connector;
-import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import FunctionLayer.CarportCalculator;
 import FunctionLayer.CarportException;
-import FunctionLayer.LogicFacade;
 import FunctionLayer.Materials;
-import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;

@@ -6,9 +6,6 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportException;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
