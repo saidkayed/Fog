@@ -35,6 +35,9 @@ public static User createUser(String email, String password, int phone) throws C
     public static int getPhoneByUserId(int id) throws CarportException {
         return UserMapper.getPhoneByUserId(id);
     }
+    public static User getUserById(int id) throws CarportException {
+        return UserMapper.getUserById(id);
+    }
 
     //OrderMapper
     public static void createOrder(User user, Order order) throws CarportException {

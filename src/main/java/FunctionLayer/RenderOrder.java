@@ -21,7 +21,7 @@ public class RenderOrder {
 
             output = "<tbody>"
                     + "<tr>"
-                    + "<th>Userid</th>"
+                    + "<th>Email</th>"
                     + "<th>Orderid</th>"
                     + "<th>Phone</th>"
                     + "<th>Length</th>"
@@ -34,8 +34,9 @@ public class RenderOrder {
 
             for (Order orders : order) {
                 int phone = LogicFacade.getPhoneByUserId(orders.getId());
+                User user = LogicFacade.getUserById(orders.getId());
                 output += "<tr>"
-                        + "<td>" + orders.getId() + "</td>"
+                        + "<td>" + user.getEmail() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + phone + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
@@ -80,7 +81,7 @@ public class RenderOrder {
 
             output = "<tbody>"
                     + "<tr>"
-                    + "<th>Userid</th>"
+                    + "<th>Email</th>"
                     + "<th>Orderid</th>"
                     + "<th>Phone</th>"
                     + "<th>Length</th>"
@@ -93,7 +94,7 @@ public class RenderOrder {
 
             for (Order orders : order) {
                 output += "<tr>"
-                        + "<td>" + orders.getId() + "</td>"
+                        + "<td>" + user.getEmail() + "</td>"
                         + "<td>" + orders.getOrderid() + "</td>"
                         + "<td>" + user.getPhone() + "</td>"
                         + "<td>" + orders.getLength() + "</td>"
