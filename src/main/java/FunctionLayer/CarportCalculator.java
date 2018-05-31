@@ -17,7 +17,12 @@ public class CarportCalculator {
         int screws;
         double topScrews;
         
-        
+    /**
+     * Calculates the required Materials needed for the Order with corresponding Orderid and adds to an arraylist
+     * @param orderid
+     * @return ArrayList
+     * @throws CarportException
+     */
     public ArrayList<Materials> calculator(int orderid) throws CarportException{
        
         Order order = LogicFacade.getOrderById(orderid);
