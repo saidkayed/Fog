@@ -45,7 +45,7 @@ public class RenderOrder {
                         + "<td>" + orders.getShed() + "</td>"
                         + "<td>" + orders.getStatus() + "</td>";
 
-                if (orders.getStatus().equals("pending")) {
+                if (orders.getStatus().equals("Pending")) {
                     output += "<td><form name=\"sendorder\" action=\"FrontController\" method=\"POST\">"
                             + "<input type=\"hidden\" name=\"command\" value=\"sendorder\">"
                             + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
