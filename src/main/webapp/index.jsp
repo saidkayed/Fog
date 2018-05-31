@@ -72,36 +72,16 @@
                 <table >
                     <td>
                         <h4> Login </h4>
-                        <form name="login" action="FrontController" method="POST"
-                              data-fv-framework="bootstrap"
-                              data-fv-icon-valid="glyphicon glyphicon-ok"
-                              data-fv-icon-invalid="glyphicon glyphicon-remove"
-                              data-fv-icon-validating="glyphicon glyphicon-refresh">
+                        <form name="login" action="FrontController" method="POST">
                             <input type="hidden" name="command" value="login">
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Email</label>
-                                <div class="col-xs-5">
-                                    <input type="text" class="form-control" name="email"
-                                           required
-                                           data-fv-notempty-message="Email is required" />
-                                </div>
-                            </div>
+                            Email <br>
+                            <input type="text" class="form-control" name="email" required>
 
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Password</label>
-                                <div class="col-xs-5">
-                                    <input type="password" class="form-control" name="password"
-                                           required
-                                           data-fv-notempty-message="Password price is required" />
-                                </div>
-                            </div>
+                            Password<br>
+                            <input type="password" class="form-control" name="password" required>
+
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
-                        <script>
-                            $(document).ready(function () {
-                                $('#login').formValidation();
-                            });
-                        </script>
                     </td>
                 </table>
             </div>
@@ -126,53 +106,19 @@
 
                         <h4> Register </h4>
 
-                        <form name="register" action="FrontController" method="POST"
+                        <form name="register" action="FrontController" method="POST">
+                              <input type="hidden" name="command" value="register">
+                                Email <br>
+                                <input type="email" class="form-control" name="email" required>
+                                Phone <br>
+                                <input type="phone" class="form-control" name="phone" required>
 
-                              <input type="hidden" name="command" value="register"                              data-fv-framework="bootstrap"
-                               data-fv-icon-valid="glyphicon glyphicon-ok"
-                               data-fv-icon-invalid="glyphicon glyphicon-remove"
-                               data-fv-icon-validating="glyphicon glyphicon-refresh">
-                            <input type="hidden" name="command" value="login">
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Email</label>
-                                <div class="col-xs-5">
-                                    <input type="text" class="form-control" name="email"
-                                           required
-                                           data-fv-notempty-message="Email is required" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Phone</label>
-                                <div class="col-xs-5">
-                                    <input type="phone" class="form-control" name="phone"
-                                           required
-                                           data-fv-notempty-message="Phone is required" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Password</label>
-                                <div class="col-xs-5">
-                                    <input type="password" class="form-control" name="password1"
-                                           required
-                                           data-fv-notempty-message="Password price is required" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-xs-3 control-label">Password</label>
-                                <div class="col-xs-5">
-                                    <input type="password" class="form-control" name="password2"
-                                           required
-                                           data-fv-notempty-message="Password price is required" />
-                                </div>
-                            </div>
+                                Password<br>
+                                <input type="password" class="form-control" name="password1" required>
+                                Password<br>
+                                <input type="password" class="form-control" name="password2" required>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                         </form>
-                        <script>
-                            $(document).ready(function () {
-                                $('#register').formValidation();
-                            });
-                        </script>
                     </td>
                 </table>
             </div>
