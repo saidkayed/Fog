@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * The purpose of UserMapper is to...
  *
- * @author kasper
+ * @author tobbe
  */
 public class UserMapper {
 
