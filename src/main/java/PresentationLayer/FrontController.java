@@ -5,8 +5,11 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
+import FunctionLayer.OurLogger;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +23,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )
 public class FrontController extends HttpServlet {
 
+    
+   
+
+
+               
     /**
      Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      methods.
@@ -29,18 +37,32 @@ public class FrontController extends HttpServlet {
      @throws ServletException if a servlet-specific error occurs
      @throws IOException if an I/O error occurs
      */
+
+     
+    private final static Logger logger = Logger.getLogger(OurLogger.class.getName());
+
+    
+    
+
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
+            
             throws ServletException, IOException {
+       
         try {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             request.getRequestDispatcher( view + ".jsp" ).forward( request, response );
-        } catch ( LoginSampleException ex ) {
+        } catch ( CarportException ex ) {
+
+            OurLogger.init();
+
+            logger.log(Level.SEVERE, null, ex);
             request.setAttribute( "error", ex.getMessage() );
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );
         }
+         
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      Handles the HTTP <code>GET</code> method.

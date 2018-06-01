@@ -20,42 +20,81 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="css-and-pictures/logo.css">
+        <title>Customer Choice</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <img src="css-and-pictures/flogo.jpg"  width="300" height="75">
+                <div class="topleft"></div>
+            </div>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
                 <form name="logout" action="FrontController" method="POST">
-                    Hello <%=user.getEmail()%>
+                    <%=user.getEmail()%>
                     <input type="hidden" name="command" value="logout">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
                 </form>
             </div>
-        </nav>        
+        </nav>
+
     <center>
-        
-        <form name="viewsvg" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="viewsvg">
-            Length in cm:<br>
-            <input type="number" name="length" placeholder="must be at least 200">
-            <br>
-            Width in cm:<br>
-            <input type="number" name="width" placeholder="must be at least 200">
-            <br>
-            <input type="submit" value="View Plan">
-        </form>
-        <%if (message != null) {%>
 
-        <%=message%>
+        <table>
+            <tr>
+                <td>
 
-        <%}%>
+                    <form name="viewsvg" action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="viewsvg">
+                        Length in cm:<br>
 
-        <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="home">
-            <input type="submit" value="Back">   
-        </form>
-        
+
+
+                        <select name="length" class="form-control" data-style="btn-success">
+                            <option type="number" value="390" >390</option>
+                            <option type="number" value="450" >450</option>
+                            <option type="number" value="480" >480</option>
+                            <option type="number" value="500" >500</option>
+                        </select>
+
+                        <br>
+                        Width in cm:<br>
+                        <select name="width" class="form-control" data-style="btn-success">
+                            <option type="number" value="280">280</option>
+                            <option type="number" value="300">300</option>
+                        </select>
+                        <br>
+                        Height in cm:<br>
+                        <select name="height" class="form-control" data-style="btn-success">
+                            <option type="number" value="280">280</option>
+                            <option type="number" value="300">300</option>
+                        </select>
+                        <br>
+                        Roof type:<br>
+                        <select name="roof" class="form-control" data-style="btn-success">
+                            <option value="fladt" name="fladt">Flat Roof</option>
+                            <option value="rejsning" name="rejsning">Triangular Roof</option>
+                        </select>
+                        <br>
+                        Shed:<br>
+                        <select name="shed" class="form-control" data-style="btn-success">
+                            <option value="withoutshed" name="withoutshed">Without Shed</option>
+                            <option value="withshed1x1" name="withshed1x1">With Shed 1m x 1m</option>
+                            <option value="withshed2x2" name="withshed2x2">With Shed 2m x 2m</option>
+                        </select>
+                        <br>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View Plan</button>
+                    </form>
+                    <br>   
+                    <form name="home" action="FrontController" method="Post">
+                        <input type="hidden" name="command" value="home">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Back</button>
+                    </form>
+
+                </td>
+            </tr>
+        </table>
     </center>
-    </body>
+</body>
 </html>

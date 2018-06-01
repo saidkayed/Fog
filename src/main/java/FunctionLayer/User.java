@@ -6,15 +6,17 @@ package FunctionLayer;
  */
 public class User {
 
-    public User( String email, String password, String role ) {
+    public User( String email, String password, int phone, String role ) {
         this.email = email;
         this.password = password;
+        this.phone = phone;
         this.role = role;
     }
 
-    private int id; // just used to demo retrieval of autogen keys in UserMapper
+    private int id; 
     private String email;
-    private String password; // Should be hashed and all
+    private String password;
+    private int phone;
     private String role;
 
     public String getEmail() {
@@ -31,6 +33,14 @@ public class User {
 
     public void setPassword( String password ) {
         this.password = password;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public String getRole() {

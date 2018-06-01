@@ -5,27 +5,22 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
 import FunctionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tobbe
+ * @author Sercan
  */
-public class DeleteOrder extends Command {
-
-    public DeleteOrder() {
-    }
-
-    @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        
-         int orderid =  Integer.parseInt(request.getParameter("orderid"));
-        LogicFacade.deleteOrderById(orderid);
-        
-        return "/WEB-INF/" + "employeeorder";
+public class ViewMaterials extends Command {
+    
+    public ViewMaterials() {
     }
     
+    @Override
+    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+
+        return "/WEB-INF/" + "employeeviewmaterials";
+    }
 }

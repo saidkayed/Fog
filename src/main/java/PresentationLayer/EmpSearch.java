@@ -5,10 +5,9 @@
  */
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.User;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +23,7 @@ public class EmpSearch extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         String search = request.getParameter("search");
         ArrayList<User> allUsers = UserMapper.getAllUsers();
         ArrayList<String> allEmails = new ArrayList();

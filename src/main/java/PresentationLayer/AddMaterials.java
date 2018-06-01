@@ -7,25 +7,31 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.CarportException;
+import FunctionLayer.Materials;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tobbe
+ * @author SA
  */
-public class DeleteOrder extends Command {
-
-    public DeleteOrder() {
-    }
+public class AddMaterials extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+
+        String name = request.getParameter("name");
+       
+        int price = Integer.parseInt(request.getParameter("price"));
         
-         int orderid =  Integer.parseInt(request.getParameter("orderid"));
-        LogicFacade.deleteOrderById(orderid);
+        String length = request.getParameter("length");
         
-        return "/WEB-INF/" + "employeeorder";
-    }
+        String description = request.getParameter("description");
+        
+        Materials mat = new Materials(name, price, length, description);
+        
+        LogicFacade.addMaterial(mat);
     
+        return "/WEB-INF/" + "employeeviewmaterials";
+    }
 }

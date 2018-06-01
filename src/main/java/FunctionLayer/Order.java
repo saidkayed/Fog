@@ -5,8 +5,6 @@
  */
 package FunctionLayer;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author tobbe
@@ -17,14 +15,20 @@ public class Order {
     private int id;
     private int width;
     private int length;
+    private int height;
+    private String roof;
+    private String shed;
     private String date;
     private String status;
 
-    public Order(int orderid, int id, int width, int length, String date, String status) {
-        this.orderid = orderid;
+    public Order(int id, int width, int length, int height, String roof, String shed, String date, String status) {
+        //this.orderid = orderid;
         this.id = id;
         this.width = width;
         this.length = length;
+        this.height = height;
+        this.roof = roof;
+        this.shed = shed;
         this.date = date;
         this.status = status;
     }
@@ -61,6 +65,30 @@ public class Order {
         this.length = length;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public String getRoof() {
+        return roof;
+    }
+
+    public void setRoof(String roof) {
+        this.roof = roof;
+    }
+
+    public String getShed() {
+        return shed;
+    }
+
+    public void setShed(String shed) {
+        this.shed = shed;
+    }
+
     public String getDate() {
         return date;
     }
@@ -79,128 +107,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", date=" + date + ", status=" + status + '}';
-    }
 
-    public static String empOrderToHtml() throws LoginSampleException {
-
-        String output = "<h2> No orders found in database</h2>";
-        
-        
-         ArrayList<Order> order = LogicFacade.getAllOrders();
-
-            if (!order.isEmpty()) {
-
-                output = "<tbody>"
-                        + "<tr>"
-                        + "<th>Userid</th>"
-                        + "<th>Orderid</th>"
-                        + "<th>Length</th>"
-                        + "<th>Width</th>"
-                        + "<th>Status</th>"
-                        + "</tr>";
-                
-                for (Order orders : order) {
-                output += "<tr>"
-                
-                        + "<td>" + orders.getId() + "</td>"
-                        + "<td>" + orders.getOrderid() + "</td>"
-                        + "<td>" + orders.getLength() + "</td>"
-                        + "<td>" + orders.getWidth() + "</td>"
-                        + "<td>" + orders.getStatus() + "</td>";
-
-                if (orders.getStatus().equals("pending")) {
-                    output += "<td><form name=\"sendorder\" action=\"FrontController\" method=\"POST\">"
-                            + "<input type=\"hidden\" name=\"command\" value=\"sendorder\">"
-                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                            + "<input type=\"submit\" value=\"Send Order\">"
-                            + "</form></td>";
-                }
-                output += "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
-                        + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
-                        + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                        + "<input type=\"submit\" value=\"Delete Order\">"
-                        + "</form></td>"
-                        + "</tr>"
-                        + "</tbody>";
-            }
-        }
-        return output;
-    }
-    
-     public static String empOrderToHtmlByEmail(String email) throws LoginSampleException {
-
-        String output = "<h2> No orders found in database</h2>";
-        User user = LogicFacade.getUserByEmail(email);
-        ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
-
-            if (!order.isEmpty()) {
-
-                output = "<tbody>"
-                        + "<tr>"
-                        + "<th>Userid</th>"
-                        + "<th>Orderid</th>"
-                        + "<th>Length</th>"
-                        + "<th>Width</th>"
-                        + "<th>Status</th>"
-                        + "</tr>";
-                
-                for (Order orders : order) {
-                output += "<tr>"
-                        + "<td>" + orders.getId() + "</td>"
-                        + "<td>" + orders.getOrderid() + "</td>"
-                        + "<td>" + orders.getLength() + "</td>"
-                        + "<td>" + orders.getWidth() + "</td>"
-                        + "<td>" + orders.getStatus() + "</td>";
-
-                if (orders.getStatus().equals("pending")) {
-                    output += "<td><form name=\"sendorder\" action=\"FrontController\" method=\"POST\">"
-                            + "<input type=\"hidden\" name=\"command\" value=\"sendorder\">"
-                            + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                            + "<input type=\"submit\" value=\"Send Order\">"
-                            + "</form></td>";
-                }
-                output += "<td><form name=\"deleteorder\" action=\"FrontController\" method=\"POST\">"
-                        + "<input type=\"hidden\" name=\"command\" value=\"deleteorder\">"
-                        + "<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getOrderid() + "\">"
-                        + "<input type=\"submit\" value=\"Delete Order\">"
-                        + "</form></td>"
-                        + "</tr>"
-                        + "</tbody>";
-            }
-        }
-        return output;
-    }
-    
-    
-
-    public static String userOrderToHtml(User user) throws LoginSampleException {
-        String output = "<h2> You have not made any orders</h2>";
-        ArrayList<Order> order = LogicFacade.getAllOrdersByUser(user);
-
-        if (!order.isEmpty()) {
-
-            output = "<tbody>"
-                    + "<tr>"
-                    + "<th>Userid</th>"
-                    + "<th>Orderid</th>"
-                    + "<th>Length</th>"
-                    + "<th>Width</th>"
-                    + "<th>Status</th>"
-                    + "</tr>";
-
-            for (Order orders : order) {
-                output += "<tr>"
-                        + "<td>" + orders.getId() + "</td>"
-                        + "<td>" + orders.getOrderid() + "</td>"
-                        + "<td>" + orders.getLength() + "</td>"
-                        + "<td>" + orders.getWidth() + "</td>"
-                        + "<td>" + orders.getStatus() + "</td>"
-                        + "</tr>";
-
-            }
-            output += "</tbody>";
-        }
-        return output;
+        return "Order{" + "orderid=" + orderid + ", id=" + id + ", width=" + width + ", length=" + length + ", height=" + height + ", roof=" + roof + ", shed=" + shed + ", date=" + date + ", status=" + status + '}';
     }
 }

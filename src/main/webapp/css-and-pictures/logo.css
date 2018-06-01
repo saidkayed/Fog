@@ -1,0 +1,32 @@
+body {
+    background-color: lightblue;
+}
+.container {
+    position: relative;
+}
+
+.topleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+img { 
+    width: 25%;
+    height: auto;
+    
+}
+
+.column {
+    float: middle;
+    width: 30%;
+    height: 300px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

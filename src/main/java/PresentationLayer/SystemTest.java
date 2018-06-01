@@ -6,28 +6,28 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportException;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.User;
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author sidad
+ * @author tobbe
  */
-public class Home extends Command {
+public class SystemTest extends Command {
 
-    public Home() {
+    public SystemTest() {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException, IOException {
+        User user = LogicFacade.login("SystemTester", "SystemTester");
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if(user.getRole().equals("tester")){
-            return "index";
-        }
-        return "/WEB-INF/" + user.getRole() + "page";
+        session.setAttribute("user", user);
+        return "/WEB-INF/" + "customerchoice";
     }
-
+    
 }

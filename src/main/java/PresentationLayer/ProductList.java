@@ -5,8 +5,10 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
+import FunctionLayer.CarportCalculator;
 import FunctionLayer.CarportException;
+import FunctionLayer.Materials;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,18 +16,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author tobbe
  */
-public class DeleteOrder extends Command {
+public class ProductList extends Command {
 
-    public DeleteOrder() {
+    public ProductList() {
     }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+        CarportCalculator car = new CarportCalculator();
+        int orderid = Integer.parseInt(request.getParameter("orderid"));
+        ArrayList<Materials> materials = car.calculator(orderid);
         
-         int orderid =  Integer.parseInt(request.getParameter("orderid"));
-        LogicFacade.deleteOrderById(orderid);
-        
-        return "/WEB-INF/" + "employeeorder";
+        request.setAttribute("materials", materials);
+        return "/WEB-INF/" + "productlist";
     }
     
 }

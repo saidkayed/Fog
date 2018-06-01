@@ -5,13 +5,14 @@
  */
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.CarportException;
 import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -20,23 +21,30 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static void createOrder(User user, int width, int length, String date, String status) throws LoginSampleException {
+    public static void createOrder(User user, Order order) throws CarportException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `order` (id, width, length, date, status) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            String SQL = "INSERT INTO `order` (id, width, length, height, roof, shed, date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, user.getId());
-            ps.setInt(2, width);
-            ps.setInt(3, length);
-            ps.setString(4, date);
-            ps.setString(5, status);
+            ps.setInt(2, order.getWidth());
+            ps.setInt(3, order.getLength());
+            ps.setInt(4, order.getHeight());
+            ps.setString(5, order.getRoof());
+            ps.setString(6, order.getShed());
+            ps.setString(7, order.getDate());
+            ps.setString(8, order.getStatus());
             ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            order.setOrderid(id);
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
     }
 
-    public static ArrayList<Order> getAllOrders() throws LoginSampleException {
+    public static ArrayList<Order> getAllOrders() throws CarportException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -50,20 +58,24 @@ public class OrderMapper {
                 int id = rs.getInt("id");
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
-
-                Order order = new Order(orderid, id, width, length, date, status);
-
+                
+                
+                Order order = new Order(id, width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
         return allOrders;
     }
 
-    public static ArrayList<Order> getAllOrdersByUser(User user) throws LoginSampleException {
+    public static ArrayList<Order> getAllOrdersByUser(User user) throws CarportException {
         ArrayList<Order> allOrders = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -78,20 +90,54 @@ public class OrderMapper {
                 int orderid = rs.getInt("orderid");
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
 
-                Order order = new Order(orderid, user.getId(), width, length, date, status);
-
+                Order order = new Order(user.getId(), width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
+                
                 allOrders.add(order);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
         return allOrders;
     }
+    
+    public static Order getOrderById(int orderid) throws CarportException{
+        Order order = null;
+        try{
+            Connection con = Connector.connection();
+            String SQL = "select * from `order` where orderid = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, orderid);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                int width = rs.getInt("width");
+                int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                String roof = rs.getString("roof");
+                String shed = rs.getString("shed");
+                String date = rs.getString("date");
+                String status = rs.getString("status");
+                
+                order = new Order(id, width, length, height, roof, shed, date, status);
+                order.setOrderid(orderid);
+            }
+            
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new CarportException(ex.getMessage());
+    }
+        return order;
+    }
 
-    public static void sendOrderById(int orderid) throws LoginSampleException {
+    public static void sendOrderById(int orderid) throws CarportException {
         Order output = null;
 
         try {
@@ -103,11 +149,11 @@ public class OrderMapper {
             st.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
     }
 
-    public static void deleteOrderById(int orderid) throws LoginSampleException {
+    public static void deleteOrderById(int orderid) throws CarportException {
         try {
             Connection con = Connector.connection();
             String SQL = "Delete from `order` where orderid = ?";
@@ -115,7 +161,7 @@ public class OrderMapper {
             st.setInt(1, orderid);
             st.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new CarportException(ex.getMessage());
         }
 
     }

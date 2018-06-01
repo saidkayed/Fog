@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tobbe
+ * @author Sercan
  */
-public class DeleteOrder extends Command {
+public class DeleteMaterial extends Command {
 
-    public DeleteOrder() {
+    public DeleteMaterial() {
     }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+        int mid = Integer.parseInt(request.getParameter("materialid"));
+        LogicFacade.deleteMaterialById(mid);
         
-         int orderid =  Integer.parseInt(request.getParameter("orderid"));
-        LogicFacade.deleteOrderById(orderid);
-        
-        return "/WEB-INF/" + "employeeorder";
+        return "/WEB-INF/" + "employeeviewmaterials"; 
     }
     
 }
